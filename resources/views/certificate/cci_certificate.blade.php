@@ -7,12 +7,13 @@
 <div style="width:21cm; height:28cm;  overflow: hidden;">
     <div style="height:40px; width:40px"> LOGO </div>
     <div>
+        <div style="float:right">
+            {!! QrCode::generate($jsoncci) !!}</div>
         <h3 style="text-align: center" >NEROLI TECHNOLOGIES LIMITED RC: 998330</h3>
-        <div>
-        {!! QrCode::generate($jsoncci) !!}
-    </div>
+
         <h5 style="text-align: center" >CLEAN CERTIFICATE OF INSPECTION <br/>
 ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
+<h6 style="text-align: center" ><u>http://APP_HOST/newcert/print?id={{$cci->id}}</u></h6>
 
 <div style="font-size: 11px; text-align:center;"><strong>CCI Number: {{$cci->cci_id}}</strong></div>
     </div>
@@ -98,7 +99,6 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 SHIPMENT DATE: {{$cci->shipdate}}<br/>
                 CARRIER/VESSEL: {{$cci->vessel}}<br/>
                 EXIT POINT:  {{$cci->exitport}}<br/>
-                CONTAINER NUMBER: {{$cci->container_no}}<br/>
             </td>
             <td>
                 SHIPPING AGENT: {{$cci->shipagent}}<<br/>

@@ -24,21 +24,59 @@ class CicController extends Controller
         
     }
 
+        /**
+     * Display a listing of the resource.
+     */
+    public function homeDashboard()
+    {
+        $cicList=cic::all();
+
+        return view('dashboard')->with('ccilist', $cicList);
+        
+    }
+
+     /**
+     * Show the list of certificate awaiting VALIDATION
+     */
+    public function toValidate()
+    {
+        //
+        $cicList=cic::where('status','SUBMITTED')->orderBy('updated_at')->get();
+        $qmode='VALIDATED';
+        return view('certificate.newcert_approve')->with('ccilist', $cicList)->with('qmode',$qmode);
+    }
+
     /**
      * Show the list of certificate awaiting approval
      */
     public function toApprove()
     {
         //
-        $cicList=cic::where('status','SUBMITTED')->orderBy('updated_at')->get();
-        
-        return view('certificate.newcert_approve')->with('ccilist', $cicList);
+        $cicList=cic::where('status','VALIDATED')->orderBy('updated_at')->get();
+        $qmode='APPROVED';
+        return view('certificate.newcert_approve')->with('ccilist', $cicList)->with('qmode',$qmode);
     }
 
     public function getcciwa(Request $request)
     {
-        //
+        $qmode=$request->mode;
+        if($qmode=='VALIDATED'){
+            $mode='SUBMITTED';
+        }
+        elseif($qmode=='APPROVED'){
+            $mode='VALIDATED';
+        }
 
+        if ($request->name==Null) {
+            $cicList = cic::whereBetween('date', [$request->datefrom, $request->dateto])->where('status', $mode)->get();
+        }
+        else {
+            $search=strtoupper($request->name);
+            $cicList = cic::whereBetween('date', [$request->datefrom, $request->dateto])->where('status', $mode)
+            ->where('exportersname','LIKE', "%{$search}%")->get();
+        }
+
+/** 
         if (isset($request->datefrom) ){
             $cicList=cic::where('status','SUBMITTED')
             ->where('date','>=', $request->datefrom)
@@ -50,8 +88,8 @@ class CicController extends Controller
             ->where('date','<=', $request->dateto)
             ->orderBy('updated_at')->get();
         }
- 
-        return view('certificate.newcert_approve')->with('ccilist', $cicList);
+ */
+        return view('certificate.newcert_approve')->with('ccilist', $cicList)->with('qmode',$qmode);
     }
 
         /**
@@ -156,6 +194,9 @@ class CicController extends Controller
      */
     public function createStep1(Request $request)
     {
+        try {
+
+    
         //Get the Currently logged in User
         $user= User::find(Auth::id());
 
@@ -177,6 +218,10 @@ class CicController extends Controller
         
     
        return view('certificate.newcert_expd')->with('cci',$cic)->with('curr',$curr);
+        }
+        catch (\Throwable $th) {
+            return redirect('/printerror');
+           } 
     }
         /**
      * Second  STEP IN CREATING NEW CCI.aSHIPPING DETAILS 
@@ -215,8 +260,8 @@ class CicController extends Controller
         'quantity'=> 'required',
         'unitprice'=> 'required','exp_invoice'=> 'required',
         'invoice_date'=> 'required','payment_terms'=> 'required', 'currency'=> 'required',
-        'exporterinvoicevalue'=> 'required','freightcharges'=> 'required','insurance'=> 'required',
-        'totalvalue'=> 'required'
+        'exporterinvoicevalue'=> 'required|numeric','freightcharges'=> 'required|numeric','insurance'=> 'required|numeric',
+        'totalvalue'=> 'required|numeric'
         ]);
       
         
@@ -270,6 +315,17 @@ class CicController extends Controller
      */
     public function postcreateStep2(Request $request)
     {
+        $validatedata= $request->validate([ 
+            'shipdate'=>'required',
+            'shipagent'=>'required',
+            'vessel'=>'required',
+            'loadingno'=>'required',
+            'exitport'=>'required',
+            'destination'=>'required'
+
+
+        ]);
+        try{
     
         $shpdetails=cic::find($request->id);
 
@@ -279,10 +335,15 @@ class CicController extends Controller
         $shpdetails->loadingno = $request->loadingno;
         $shpdetails->exitport = $request->exitport;
         $shpdetails->destination = $request->destination;
-        $shpdetails->container_no = $request->container_no;
+
 
         $shpdetails->save(); 
        return view('certificate.newcert_inspd')->with('cci',$shpdetails);
+        }
+     catch (\Throwable $th) {
+        return redirect('/printerror');
+       } 
+        
     }
     /**
      * Third STEP IN CREATING NEW CCI. 
@@ -319,17 +380,195 @@ class CicController extends Controller
         $pinspdetails->pif_receopt_no2 = $request->if_receopt_no2;
         $pinspdetails->status='SUBMITTED';
 
-        $pinspdetails->save();    
-       return view('dashboard');
+        $pinspdetails->save(); 
+        $cciList= cic::all();   
+       return redirect('dashboard')->with('ccilist',$cciList);
     }
 
     public function printcert(Request $request)
     {
-        
+       // dd($request);
+       try {
         $cci=cic::find($request->input('id'));
-        $jsoncci=$cci->toJson();
+        if($cci->status=='APPROVED'){
+        $qrcols=cic::select('cci_id', 'exportersname','nxpform_no', 'exp_invoice', 'date');
+        $jsoncci=json_encode($qrcols);
 
         return view('certificate.cci_certificate')->with('cci',$cci)->with('jsoncci',$jsoncci);
+        }
+        else{
+            
+        }
+
+       } catch (\Throwable $th) {
+        return redirect('/printerror');
+       } 
+
+    }
+
+
+    
+    public function getcert(Request $request)
+    {
+        $curr=Currency::all();
+        $cci=cic::find($request->input('id'));
+
+        return view('certificate.showcert')->with('cci',$cci)->with('curr',$curr);
+    }
+
+
+    public function editcert(Request $request)
+    {
+
+        //dd($request);
+
+       
+        $cci = cic::find($request->input('id'));
+        $editaction=$request->action;
+        switch($editaction){
+            case "SUBMIT FOR VALIDATION":
+                ##VALIDATE REQUEST DATA
+                $validatedData = $request->validate([
+                    'nxpform_no' => 'required',
+                    'nepcno' => 'required',
+                    'year' => 'required|numeric',
+                    'hscode' => 'required',
+                    'origin' => 'required',
+                    'importersname' => 'required',
+                    'importersaddress' => 'required',
+                    'exportersname' => 'required',
+                    'exportersaddress' => 'required',
+                    'rc_no' => 'required',
+                    'exportersbank' => 'required',
+                    'importersbank' => 'required',
+                    'exporterbank_ref' => 'required',
+                    'importerbank_ref' => 'required',
+                    'descriptionofgoods' => 'required',
+                    'basisofsale' => 'required',
+                    'units' => 'required',
+                    'quantity' => 'required',
+                    'unitprice' => 'required', 'exp_invoice' => 'required',
+                    'invoice_date' => 'required', 'payment_terms' => 'required', 'currency' => 'required',
+                    'exporterinvoicevalue' => 'required', 'freightcharges' => 'required', 'insurance' => 'required',
+                    'totalvalue' => 'required',
+                    'shipdate' => 'required',
+                    'shipagent' => 'required',
+                    'vessel' => 'required',
+                    'loadingno' => 'required',
+                    'exitport' => 'required',
+                    'destination' => 'required',
+                    'pif_hscode' => 'required',
+                    'pif_description' => 'required',
+                    'pif_units' => 'required',
+                    'pif_inspectiondate' => 'required',
+                    'pif_quantity' => 'required',
+                    'pif_unitprice' => 'required',
+                    'pif_pakaging' => 'required',
+                    'pif_gweight' => 'required',
+                    'pif_quality' => 'required',
+                    'pif_nweight' => 'required',
+                    'pif_valueofgoods' => 'required',
+                    'pif_freightcharges' => 'required',
+                    'pif_insurance' => 'required',
+                    'pif_bos' => 'required',
+                    'pif_forexproc' => 'required',
+                    'pif_exchange_date' => 'required',
+                    'pif_currency' => 'required',
+                    'pif_exchange_rate' => 'required',
+                    'pif_ness_charge_payable' => 'required',
+                    'pif_receipt_no' => 'required',
+                    'pif_actual_ness_charges' => 'required',
+                    'pif_balance_paid' => 'required',
+                    'pif_receopt_no2' => 'required',
+
+                ]);
+
+
+
+                $cci->pif_hscode = $request->pif_hscode;
+                $cci->pif_description = $request->pif_description;
+                $cci->pif_units = $request->pif_units;
+                $cci->pif_inspectiondate = $request->pif_inspectiondate;
+                $cci->pif_quantity = $request->pif_quantity;
+                $cci->pif_unitprice = $request->pif_unitprice;
+                $cci->pif_pakaging = $request->pif_pakaging;
+                $cci->pif_gweight = $request->pif_gweight;
+                $cci->pif_quality = $request->pif_quality;
+                $cci->pif_nweight = $request->pif_nweight;
+                $cci->pif_valueofgoods = $request->pif_valueofgoods;
+                $cci->pif_valueinwords = $request->pif_valueinwords;
+                $cci->pif_freightcharges = $request->pif_freightcharges;
+                $cci->pif_insurance = $request->pif_insurance;
+                $cci->pif_bos = $request->pif_bos;
+                $cci->pif_forexproc = $request->pif_forexproc;
+                $cci->pif_exchange_date = $request->pif_exchange_date;
+                $cci->pif_currency = $request->pif_currency;
+                $cci->pif_exchange_rate = $request->pif_exchange_rate;
+                $cci->pif_ness_charge_payable = $request->pif_ness_charge_payable;
+                $cci->pif_receipt_no = $request->pif_receipt_no;
+                $cci->pif_actual_ness_charges = $request->pif_actual_ness_charges;
+                $cci->pif_balance_paid = $request->pif_balance_paid;
+                $cci->pif_receopt_no2 = $request->pif_receopt_no2;
+                $cci->shipdate = $request->shipdate;
+                $cci->shipagent = $request->shipagent;
+                $cci->vessel = $request->vessel;
+                $cci->loadingno = $request->loadingno;
+                $cci->exitport = $request->exitport;
+                $cci->destination = $request->destination;
+                $cci->nxpform_no = $request->nxpform_no;
+                $cci->year = $request->year;
+                $cci->status = $request->status;
+                $cci->nepc_no = $request->nepcno;
+                $cci->year = $request->year;
+                $cci->date = $request->date;
+                $cci->hscode = $request->hscode;
+                $cci->origin = $request->origin;
+                $cci->importersname = $request->importersname;
+                $cci->importersaddress = $request->importersaddress;
+                $cci->importerbank = $request->importersbank;
+                $cci->importerbank_ref = $request->importerbank_ref;
+                $cci->exportersname = $request->exportersname;
+                $cci->exportersaddress = $request->exportersaddress;
+                $cci->exporterbank = $request->exportersbank;
+                $cci->rc_no = $request->rc_no;
+                $cci->exporterbank_ref = $request->exporterbank_ref;
+                $cci->descriptionofgoods = $request->descriptionofgoods;
+                $cci->basisofsale = $request->basisofsale;
+                $cci->units = $request->units;
+                $cci->quantity = $request->quantity;
+                $cci->unitprice = $request->unitprice;
+                $cci->exp_invoice = $request->exp_invoice;
+                $cci->invoice_date = $request->invoice_date;
+                $cci->payment_terms = $request->payment_terms;
+                $cci->currency = $request->currency;
+                $cci->exporterinvoicevalue = $request->exporterinvoicevalue;
+                $cci->freightcharges = $request->freightcharges;
+                $cci->insurance = $request->insurance;
+                $cci->totalvalue = $request->totalvalue;
+
+                $cci->status="SUBMITTED";
+
+                break;
+            case "SUBMIT FOR APPROVAL":
+                $cci->status="VALIDATED";
+                break;
+            case "APPROVAL":
+                $cci->status="APPROVED";
+                break;
+                case "PRINT":
+                
+                return redirect('/newcert/printcert?id='.$cci->id);
+                break;
+
+     
+
+        }
+        $cci->save();   
+
+        $cci=cic::find($request->input('id'));
+        $curr=Currency::all();
+
+        return view('certificate.showcert')->with('cci',$cci)->with('curr',$curr);
     }
 
     

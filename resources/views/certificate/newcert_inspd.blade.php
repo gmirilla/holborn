@@ -2,23 +2,32 @@
 
 <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">PRE-SHIPMENT INSPECTION FINDINGS</div>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
 <form action="/newcert/createstep3" method="post">
     {{ csrf_field() }}
     <div class="grid grid-cols-4 gap-4">
     <div class="form-group">
         <label for="pif_hscode">H.S. CODE:</label>
-        <input type="text" value='{{$cci->hscode}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_hscode"  name="pif_hscode">
     </div>
     <div class="form-group">
         <label for="pif_description">DESCRIPTION:</label>
-        <input type="text" value='{{$cci->descriptionofgoods}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value=""  class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="pif_description">
     </div>
     <div class="form-group">
         <label for="units">UNITS:</label>
-        <input type="text" value='{{$cci->units}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunits"  name="pif_units">
     </div>
     <div class="form-group">
@@ -48,7 +57,7 @@
     </div>
     <div class="form-group">
         <label for="pif_nweight">NET WEIGHT:</label>
-        <input type="text" value='{{$cci->quantity}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value=""class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_nweight"  name="pif_nweight">
     </div>
     <div class="form-group">
@@ -73,7 +82,7 @@
     </div>
     <div class="form-group">
         <label for="pif_bos">BASIS OF SALE:</label>
-        <input type="text" value='{{$cci->basisofsale}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_bos"  name="pif_bos">
     </div>
     <div class="form-group">
@@ -88,7 +97,7 @@
     </div>
     <div class="form-group">
         <label for="pif_currency">CURRENCY:</label>
-        <input type="text" value='{{$cci->currency}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifcurrency"  name="pif_currency">
     </div>
     <div class="form-group">
@@ -122,7 +131,7 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_receopt_no2"  name="pif_receopt_no2">
     </div>
     <div class="form-group" style="display:none ;">
-        <label for="cc_id">ID:</label>
+        <label for="id">ID:</label>
         <input type="text" value='{{$cci->id}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskid"  name="id" style="visibility': 'hidden'">
     </div>

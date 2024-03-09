@@ -7,22 +7,28 @@
 <x-app-layout>
     {{ csrf_field() }}
 
+    @php
+        $date = new DateTime('now');
+        $dt=$date->format('Y-m-d');
+
+    @endphp
+
     <div class="py-12">
         <div>
             <div>
                 <div class="card-body py-12 bg-white" style="margin-left: 35px; margin-right: 40px;  padding:10px;">
-                    <h3 style="text-align: center"><strong>FILTERs</strong></h3> 
+                    <h3 style="text-align: center"><strong>FILTERS</strong></h3> 
                     <form action="/get_csv" method="get">
                         <div class="grid grid-cols-4 gap-4">
                         <div class="form-group">
                             <label for='datefrom'>DATE FROM :</label>
-                            <input type="date" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+                            <input type="date" value="2024-01-01" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
                             text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="datefrom"  name="datefrom">
                         </div>
 
                         <div class="form-group">
                             <label for='dateto'>DATE TO :</label>
-                            <input type="date" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+                            <input type="date" value="{{$dt}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
                             text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="dateto"  name="dateto">
                         </div>
 

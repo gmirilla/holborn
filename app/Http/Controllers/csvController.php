@@ -11,9 +11,19 @@ use Illuminate\Support\Facades\File;
 class csvController extends Controller
 {
      //
-     public function get_csv(){
+     public function get_csv(Request $request){
 
-        $ccis = cic::get();
+
+        if ($request->name==Null) {
+            $ccis = cic::whereBetween('date', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')->get();
+        }
+        else {
+            $search=strtoupper($request->name);
+            $ccis = cic::whereBetween('date', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')
+            ->where('exportersname','LIKE', "%{$search}%")->get();
+        }
+
+ 
 
         // these are the headers for the csv file. Not required but good to have one incase of system didn't recongize it properly
         $headers = array(
@@ -33,7 +43,6 @@ class csvController extends Controller
         //adding the first row
         fputcsv($handle, [
             "S/N",
-            "INT REF NO.",
             "CCI NO",
             "SVP CCI NO",
             "CCI DATE",
@@ -72,13 +81,31 @@ class csvController extends Controller
         $sno=1;
         foreach ($ccis as $each_cci) {
 
+            //check for currency used and assign for report
+            $dollar=0; $GBP=0; $Euro=0;
+            switch ($each_cci->pif_currency) {
+                case 'USD':
+                    $dollar = $each_cci->pif_valueofgoods;
+                    break;
+                case 'GBP':
+                    $GBP=$each_cci->pif_valueofgoods;
+                    break;
+
+                case 'EUR':
+                    $Euro=$each_cci->pif_valueofgoods;
+                    break;
+
+            }
+
             fputcsv($handle, [
-                $sno,'n/a',
+                $sno,
                 $each_cci->cci_id,'n/a',$each_cci->date,
                 $each_cci->nxpform_no,$each_cci->exporterbank,$each_cci->pif_inspectiondate,
                 $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,
                 $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->pif_gweight,
-                $each_cci->pif_gweight,'n/a',$each_cci->currency,$each_cci->currency,'n/a','n/a',
+                $each_cci->pif_gweight,$each_cci->importerbank,$each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate,
+                $each_cci->pif_ness_charge_payable,$each_cci->pif_valueofgoods,$dollar,$Euro,$GBP,$each_cci->pif_currency,
+
                 $each_cci->pif_ness_charge_payable,
                 'n/a','n/a','n/a',
                 'n/a',$each_cci->pif_unitprice,'Ness RDate',

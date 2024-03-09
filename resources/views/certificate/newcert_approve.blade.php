@@ -16,7 +16,7 @@
                         <div class="grid grid-cols-4 gap-4">
                         <div class="form-group">
                             <label for='datefrom'>DATE FROM :</label>
-                            <input type="date" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+                            <input type="date" value="2024-01-01" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
                             text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="datefrom"  name="datefrom">
                         </div>
 
@@ -25,14 +25,27 @@
                             <input type="date" value='{{date("Y-m-d")}}' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
                             text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="dateto"  name="dateto">
                         </div>
+
+                        <div class="form-group">
+                            <label for='name'> NAME :</label>
+                            <input type="text" value="" placeholder="Importer/ Exporter" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+                            text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="name"  name="name">
+                        </div>
+
+                        <div class="form-group" style="display: none">
+                            <label for='MODE'>MODE:</label>
+                            <input type="text" value="{{$qmode}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+                            text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="mode"  name="mode">
+                        </div>
+
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> SUBMIT</button>
                     </div>
                     </form>
                 
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h3 style="text-align: center">CERTIFICATES AWAITING APPROVAL</h3> 
-                    <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px; min-height:400px">
+                    <h3 style="text-align: center">CERTIFICATES TO BE  {{$qmode}}</h3> 
+                    <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px; min-height:400px overflow:auto;">
                     <table class="table-auto table table-bordered border border-slate-500 border-separate" 
                     id="laravel_datatable" style="color:black; border: 1px solid; size:80%">
                         <thead class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left" style="background-color: blue"> 
@@ -40,8 +53,6 @@
                             <th style="width: 25%;border: 1px solid;">EXPORTER</th>
                             <th style="width: 25%;border: 1px solid;">IMPORTER</th>
                             <th style="width: 10%;border: 1px solid;">STATUS</th>
-                            <th style="width: 10%;border: 1px solid;">APPROVE</th>
-                            <th style="width: 10%;border: 1px solid;">REJECT</th>
                             <th style="width: 5%;border: 1px solid;">VIEW</th>
                         </thead>
                         @foreach ( $ccilist as $cic)
@@ -50,9 +61,7 @@
                             <td style="border: 1px solid;">{{$cic->exportersname}}</td>
                             <td style="border: 1px solid;">{{$cic->importersname}}</td>
                             <td style="border: 1px solid;">{{$cic->status}}</td>
-                            <td style="border: 1px solid; padding:5px"><a href="/newcert/qapprove?id={{$cic->id}}" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">APPROVE</a></td>
-                            <td style="border: 1px solid; padding:5px"><a href="/newcert/qreject?id={{$cic->id}}" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">REJECT</a></td>
-                            <td style="border: 1px solid; padding:5px"><a href="/newcert/qview?id={{$cic->id}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">VIEW</a></td>
+                            <td style="border: 1px solid; padding:8px"><a href="/newcert/getcert?id={{$cic->id}}" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">VIEW</a></td>
                         </tr>
                         @endforeach 
                             
