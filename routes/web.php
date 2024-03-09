@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
-
+/** 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+**/
 Route::get('/newcert',function(){
     return view('certificate.newcert');
 })->middleware(['auth','verified']);
@@ -36,10 +36,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/newcert/dashboard', [CicController::class, 'index']);
     Route::get('/newcert/printcert', [CicController::class, 'printcert']);
     Route::get('/newcert/approval_list',[CicController::class, 'toApprove']);
+    Route::get('/newcert/validate',[CicController::class, 'toValidate']);
+    Route::get('/newcert/getcert',[CicController::class, 'getcert']);
+    Route::post('/newcert/edit',[CicController::class, 'editcert']);
     Route::get('/newcert/approved',[CicController::class, 'showApprove']);
     Route::get('/newcert/qapprove',[CicController::class, 'qapprove']);
     Route::get('/newcert/qreject',[CicController::class, 'qreject']);
     Route::get('/newcert/getcciwa',[CicController::class, 'getcciwa']);
+
+    Route::get('/dashboard', [CicController::class, 'homeDashboard'])->name('dashboard');
     
     Route::get('/get_csv', [CsvController::class, 'get_csv'])->name('get_csv');
     Route::get('/newcert/genreport',function(){
