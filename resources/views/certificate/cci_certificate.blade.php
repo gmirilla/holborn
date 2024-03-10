@@ -5,7 +5,9 @@
 <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <div style="width:21cm; height:28cm;  overflow: hidden;">
-    <div style="height:40px; width:40px"> LOGO </div>
+<div style="float:left">
+    <img src="/img/neroli-logo.jpeg" alt="Logo" width="60" height="60">
+</div>
     <div>
         <div style="float:right">
             {!! QrCode::generate($jsoncci) !!}</div>
@@ -141,8 +143,10 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
             </td>
         </tr>
         <tr>
-            <td colspan=4>
-                REPRESENTATIVE:
+            <td>
+                REPRESENTATIVE:<div><img src="/img/smoh-sign.png" alt="signature of authorized approver" ></div>
+            </td>
+            <td>
             </td>
         </tr>
 
