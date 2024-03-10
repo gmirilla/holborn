@@ -104,11 +104,9 @@ class csvController extends Controller
                 $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,
                 $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->pif_gweight,
                 $each_cci->pif_gweight,$each_cci->importerbank,$each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate,
-                $each_cci->pif_ness_charge_payable,$each_cci->pif_valueofgoods,$dollar,$Euro,$GBP,$each_cci->pif_currency,
-
-                $each_cci->pif_ness_charge_payable,
-                'n/a','n/a','n/a',
-                'n/a',$each_cci->pif_unitprice,'Ness RDate',
+                $each_cci->pif_ness_charge_payable,$each_cci->pif_valueofgoods,$dollar,$Euro,$GBP,$each_cci->pif_currency,'n/a','n/a',
+                   $each_cci->pif_actual_ness_charges,$each_cci->pif_ness_charge_payable,
+                          'n/a',$each_cci->pif_unitprice,'Ness RDate',
                 $each_cci->pif_exchange_date,$each_cci->pif_receipt_no,$each_cci->pif_exchange_rate,
 
 
