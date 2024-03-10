@@ -388,6 +388,7 @@ class CicController extends Controller
     public function printcert(Request $request)
     {
        // dd($request);
+
        try {
         $cci=cic::find($request->input('id'));
         if($cci->status=='APPROVED'){
@@ -413,6 +414,8 @@ class CicController extends Controller
     {
         $curr=Currency::all();
         $cci=cic::find($request->input('id'));
+
+        //dd($request);
 
         return view('certificate.showcert')->with('cci',$cci)->with('curr',$curr);
     }
