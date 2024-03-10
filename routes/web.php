@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/dashboard');
+});
+
+Route::get('/printerror', function () {
+   return view('printerror');
 });
 /** 
 Route::get('/dashboard', function () {

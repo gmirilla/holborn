@@ -397,6 +397,7 @@ class CicController extends Controller
         return view('certificate.cci_certificate')->with('cci',$cci)->with('jsoncci',$jsoncci);
         }
         else{
+            return redirect('/printerror');
             
         }
 
@@ -422,9 +423,10 @@ class CicController extends Controller
 
         //dd($request);
 
-       
+        //check for validation authority
+        $user = User::find(Auth::id());
         $cci = cic::find($request->input('id'));
-        $editaction=$request->action;
+        $editaction = $request->action;
         switch($editaction){
             case "SUBMIT FOR VALIDATION":
                 ##VALIDATE REQUEST DATA
@@ -550,10 +552,30 @@ class CicController extends Controller
 
                 break;
             case "SUBMIT FOR APPROVAL":
-                $cci->status="VALIDATED";
+
+                if (str_contains($user->role, 'VALIDATOR')){
+
+                    $cci->status="VALIDATED";
+
+                }
+                else{
+                    $error= "INSUFFECIENT PRIVILEGES. PLEASE CONTACT AN ADMINISTRATOR";
+                    return redirect('/printerror')->with('error',$error);
+
+
+                }
+
                 break;
+
             case "APPROVAL":
+                if (str_contains($user->role, 'APPROVER')){
                 $cci->status="APPROVED";
+                }
+                else{
+                    $error= "INSUFFECIENT PRIVILEGES. PLEASE CONTACT AN ADMINISTRATOR";
+                    return redirect('/printerror')->with('error',$error);
+
+                }
                 break;
                 case "PRINT":
                 
