@@ -66,11 +66,6 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  name="pif_valueofgoods">
     </div>
     <div class="form-group">
-        <label for="pif_valueinwords">VALUE IN WORDS:</label>
-        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueinwords"  name="pif_valueinwords">
-    </div>
-    <div class="form-group">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_freightcharges"  name="pif_freightcharges">
@@ -97,8 +92,12 @@
     </div>
     <div class="form-group">
         <label for="pif_currency">CURRENCY:</label>
-        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifcurrency"  name="pif_currency">
+        <select id="pif_currency" name="pif_currency" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+            @foreach ($curr as $currs )
+            <option value='{{$currs->abbr}}'> {{$currs->name}} </option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group">
         <label for="pif_exchange_rate">EXCHANGE RATE:</label>
