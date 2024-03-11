@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/newcert/approval_list',[CicController::class, 'toApprove']);
     Route::get('/newcert/validate',[CicController::class, 'toValidate']);
     Route::post('/newcert/edit',[CicController::class, 'editcert']);
+    Route::GET('/newcert/edit',[CicController::class, 'editcert']);
     Route::get('/newcert/approved',[CicController::class, 'showApprove']);
     Route::get('/newcert/qapprove',[CicController::class, 'qapprove']);
     Route::get('/newcert/qreject',[CicController::class, 'qreject']);

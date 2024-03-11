@@ -16,11 +16,13 @@ class CicController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cicList=cic::paginate(15);
+        $ciclist=cic::latest()->paginate(5);
 
-        return view('certificate.newcert_dashboard')->with('ccilist', $cicList);
+        dd( $ciclist);
+
+        return view('certificate.newcert_dashboard',compact('ciclist') );
         
     }
 
@@ -29,7 +31,7 @@ class CicController extends Controller
      */
     public function homeDashboard()
     {
-        $cicList=cic::all();
+        $cicList=cic::paginate(15);
 
         return view('dashboard')->with('ccilist', $cicList);
         
@@ -356,16 +358,13 @@ class CicController extends Controller
     {
         
         $pinspdetails = cic::find($request->id);
-        $pinspdetails->pif_hscode = $request->pif_hscode;
         $pinspdetails->pif_description = $request->pif_description;
         $pinspdetails->pif_units = $request->pif_units;
         $pinspdetails->pif_inspectiondate = $request->pif_inspectiondate;
         $pinspdetails->pif_quantity = $request->pif_quantity;
         $pinspdetails->pif_unitprice = $request->pif_unitprice;
         $pinspdetails->pif_pakaging = $request->pif_pakaging;
-        $pinspdetails->pif_gweight = $request->pif_gweight;
         $pinspdetails->pif_quality = $request->pif_quality;
-        $pinspdetails->pif_nweight = $request->pif_nweight;
         $pinspdetails->pif_valueofgoods = $request->pif_valueofgoods;
         $pinspdetails->pif_valueinwords = $request->pif_valueinwords;
         $pinspdetails->pif_freightcharges = $request->pif_freightcharges;
@@ -379,7 +378,6 @@ class CicController extends Controller
         $pinspdetails->pif_receipt_no = $request->pif_receipt_no;
         $pinspdetails->pif_actual_ness_charges = $request->pif_actual_ness_charges;
         $pinspdetails->pif_balance_paid = $request->pif_balance_paid;
-        $pinspdetails->pif_receopt_no2 = $request->if_receopt_no2;
         $pinspdetails->status='SUBMITTED';
 
         $pinspdetails->save(); 
@@ -434,7 +432,8 @@ class CicController extends Controller
         $editaction = $request->action;
         switch($editaction){
             case "SUBMIT FOR VALIDATION":
-                ##VALIDATE REQUEST DATA
+                ##VALIDATE REQUEST DATA TO REDO
+  
                 $validatedData = $request->validate([
                     'nxpform_no' => 'required',
                     'nepcno' => 'required',
@@ -464,16 +463,13 @@ class CicController extends Controller
                     'loadingno' => 'required',
                     'exitport' => 'required',
                     'destination' => 'required',
-                    'pif_hscode' => 'required',
+
                     'pif_description' => 'required',
                     'pif_units' => 'required',
                     'pif_inspectiondate' => 'required',
                     'pif_quantity' => 'required',
                     'pif_unitprice' => 'required',
-                    'pif_pakaging' => 'required',
-                    'pif_gweight' => 'required',
                     'pif_quality' => 'required',
-                    'pif_nweight' => 'required',
                     'pif_valueofgoods' => 'required',
                     'pif_freightcharges' => 'required',
                     'pif_insurance' => 'required',
@@ -486,24 +482,19 @@ class CicController extends Controller
                     'pif_receipt_no' => 'required',
                     'pif_actual_ness_charges' => 'required',
                     'pif_balance_paid' => 'required',
-                    'pif_receopt_no2' => 'required',
+
 
                 ]);
 
 
 
-                $cci->pif_hscode = $request->pif_hscode;
                 $cci->pif_description = $request->pif_description;
                 $cci->pif_units = $request->pif_units;
                 $cci->pif_inspectiondate = $request->pif_inspectiondate;
                 $cci->pif_quantity = $request->pif_quantity;
                 $cci->pif_unitprice = $request->pif_unitprice;
-                $cci->pif_pakaging = $request->pif_pakaging;
-                $cci->pif_gweight = $request->pif_gweight;
                 $cci->pif_quality = $request->pif_quality;
-                $cci->pif_nweight = $request->pif_nweight;
                 $cci->pif_valueofgoods = $request->pif_valueofgoods;
-                $cci->pif_valueinwords = $request->pif_valueinwords;
                 $cci->pif_freightcharges = $request->pif_freightcharges;
                 $cci->pif_insurance = $request->pif_insurance;
                 $cci->pif_bos = $request->pif_bos;
@@ -515,7 +506,6 @@ class CicController extends Controller
                 $cci->pif_receipt_no = $request->pif_receipt_no;
                 $cci->pif_actual_ness_charges = $request->pif_actual_ness_charges;
                 $cci->pif_balance_paid = $request->pif_balance_paid;
-                $cci->pif_receopt_no2 = $request->pif_receopt_no2;
                 $cci->shipdate = $request->shipdate;
                 $cci->shipagent = $request->shipagent;
                 $cci->vessel = $request->vessel;
