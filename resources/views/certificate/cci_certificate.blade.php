@@ -121,7 +121,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 UNITS: {{$cci->pif_units}}<br/>
                 (B/L) QUANTITY: {{$cci->pif_quantity}}<br/>
                 UNIT PRICE: {{$cci->pif_unitprice}}<br/>
-                TOTAL FOB VALUE OF GOODS: {{$cci->pif_valueofgoods}}<br/>
+                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,2)}}<br/>
                 NESS CHARGES PAYABLE:{{number_format($cci->pif_ness_charge_payable,2)}}<br/>
                 
             </td>
@@ -131,7 +131,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 EXCHANGE RATE: {{$cci->pif_exchange_rate}}<br/><br/>
                 (B/L) QUANTITY: {{$cci->quantity}}<br/>
                 UNIT PRICE: {{$cci->pif_unitprice}}<br/>
-                TOTAL FOB VALUE OF GOODS: {{$cci->pif_valueofgoods}}<br/> 
+                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,2)}}<br/> 
                 NESS CHARGES PAID: {{number_format($cci->pif_actual_ness_charges,2)}}<br/>
 
 
@@ -142,7 +142,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
         </tr>
         <tr>
             <td colspan=4>
-                FOB VALUE OF GOODS OUTSTANDING: {{$cci->pif_valueofgoods - $cci->pif_valueofgoods}}  <br/>
+                FOB VALUE OF GOODS OUTSTANDING: {{number_format(($cci->pif_valueofgoods - $cci->pif_valueofgoods),2)}}  <br/>
 
                 NESS CHARGES OUTSTANDING: {{number_format(($cci->pif_ness_charge_payable) - ($cci->pif_actual_ness_charges),2)}}<br/>
 

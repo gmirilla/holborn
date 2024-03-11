@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <x-app-layout>
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
     <div class="card-header text-center font-weight-bold" style="color: #fff">DECLARED EXPORT DETAILS </div>
@@ -19,126 +20,130 @@
     </div>
     @php
         if ($cci->status!='DRAFT') {
-            echo '<fieldset readonly="readonly">';
+            echo '<fieldset readonly>';
+                $ro='readonly';
+        }
+        else{
+            $ro='';
         }
     @endphp
     <div class="grid grid-cols-6 gap-2">
     <div class="form-group">
         <label for="nxpform_no" class="block text-sm font-medium leading-6 text-gray-900">N.X.P FORM NO:</label>
         <input type="text" value='{{$cci->nxpform_no}} 'class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknxpform_no"  name="nxpform_no">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknxpform_no"  name="nxpform_no" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="nepcno">N.E.P.C NO:</label>
         <input type="text" value='{{$cci->nepc_no}} ' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="nepcno">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="nepcno" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="year">YEAR:</label>
         <input type="text" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->year}} data-input name="year">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->year}} data-input name="year" {{$ro}}>
   
     </div>
     <div class="form-group">
         <label for="date">Date:</label>
         <input type="date" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->date}} data-input name="date">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->date}} data-input name="date" {{$ro}}>
   
     </div>
     <div class="form-group">
         <label for="hscode">H.S. CODE:</label>
         <input type="text" value="{{$cci->hscode}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskhscode"  name="hscode">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskhscode"  name="hscode" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="origin">ORIGIN:</label>
         <input type="text" value="{{$cci->origin}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="origin">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="origin" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="importersname">IMPORTER'S NAME</label>
         <input type="text" value="{{$cci->importersname}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersname"  name="importersname">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersname"  name="importersname" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="importersaddress">IMPORTER'S ADDRESS:</label>
         <input type="text" value="{{$cci->importersaddress}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersaddress"  name="importersaddress">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersaddress"  name="importersaddress" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="importersbank">IMPORTER'S BANK:</label>
         <input type="text" value="{{$cci->importerbank}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersbank"  name="importersbank">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersbank"  name="importersbank" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="importerbank_ref">IMPORTER BANK REF:</label>
         <input type="text" value="{{$cci->importerbank_ref}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimporterbank_ref"  name="importerbank_ref">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimporterbank_ref"  name="importerbank_ref" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="exportersname">EXPORTER'S NAME:</label>
         <input type="text" value="{{$cci->exportersname}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexportersname"  name="exportersname">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexportersname"  name="exportersname" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="exportersaddress">EXPORTER'S ADDRESS:</label>
         <input type="text" value="{{$cci->exportersaddress}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexportersaddress"  name="exportersaddress">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexportersaddress"  name="exportersaddress" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="exportersbank">EXPORTER'S BANK:</label>
         <input type="text" value="{{$cci->exporterbank}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexportersbank"  name="exportersbank">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexportersbank"  name="exportersbank" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="rc_no">EXPORTER'S RC NO:</label>
         <input type="text" value="{{$cci->rc_no}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskrc_no"  name="rc_no">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskrc_no"  name="rc_no" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="exporterbank_ref">EXPORTER'S BANK REF:</label>
         <input type="text" value="{{$cci->exporterbank_ref}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterbank_ref"  name="exporterbank_ref">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterbank_ref"  name="exporterbank_ref" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="descriptionofgoods">DESCRIPTION OF GOODS:</label>
         <input type="text" value="{{$cci->descriptionofgoods}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskdescriptionofgoods"  name="descriptionofgoods">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskdescriptionofgoods"  name="descriptionofgoods" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="basisofsale">BASIS OF SALE:</label>
         <input type="text" value="{{$cci->basisofsale}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskbasisofsale"  name="basisofsale">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskbasisofsale"  name="basisofsale" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="units">UNITS:</label>
         <input type="text" value="{{$cci->units}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  name="units">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  name="units" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="quantity">NOMINATED QUANTITY:</label>
-        <input type="text" value="{{$cci->quantity}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskquantity"  name="quantity">
+        <input type="number" value="{{$cci->quantity}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskquantity"  name="quantity" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="unitprice">UNITPRICE:</label>
         <input type="text" value="{{$cci->unitprice}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunitprice"  name="unitprice">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunitprice"  name="unitprice" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="exp_invoice">EXPORTER'S INVOICE NO:</label>
         <input type="text" value="{{$cci->exp_invoice}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskep_invoice"  name="exp_invoice">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskep_invoice"  name="exp_invoice" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="invoice_date">INVOICE DATE:</label>
         <input type="date" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->invoice_date}} data-input name="invoice_date">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->invoice_date}} data-input name="invoice_date" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="payment_terms">PAYMENT TERMS:</label>
         <input type="text" value="{{$cci->payment_terms}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpaymentterms"  name="payment_terms">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpaymentterms"  name="payment_terms" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="currency">CURRENCY:</label>
@@ -163,22 +168,22 @@
     <div class="form-group" style="display: none">
         <label for="exporterinvoicevalue">EXPORTER INVOICE VALUE:</label>
         <input type="text" value="{{$cci->exporterinvoicevalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterinvoicevalue"  name="exporterinvoicevalue">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterinvoicevalue"  name="exporterinvoicevalue" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="freightcharges">FREIGHT CHARGES:</label>
-        <input type="text" value="{{$cci->freightcharges}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskfreightcharges"  name="freightcharges">
+        <input type="number" value="{{$cci->freightcharges}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskfreightcharges"  name="freightcharges" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="insurance">INSURANCE:</label>
-        <input type="text" value="{{$cci->insurance}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinsurance"  name="insurance">
+        <input type="number" value="{{$cci->insurance}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinsurance"  name="insurance" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="totalvalue">TOTAL VALUE:</label>
-        <input type="text" value="{{$cci->totalvalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue"  name="totalvalue">
+        <input type="number" value="{{$cci->totalvalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue"  name="totalvalue" {{$ro}}>
     </div>
 </div>
 </div>
@@ -190,32 +195,32 @@
     <div class="form-group">
         <label for='shipdate'>SHIPMENT (B/L) DATE</label>
         <input type="date" value="{{$cci->shipdate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknxpform_no"  name="shipdate">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknxpform_no"  name="shipdate" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="shipagent">SHIPPING AGENT</label>
         <input type="text" value="{{$cci->shipagent}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="shipagent">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="shipagent" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="vessel">VESSEL</label>
         <input type="text" value="{{$cci->vessel}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskhscode"  name="vessel">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskhscode"  name="vessel" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="loadingno">LOADING NO:</label>
         <input type="text" value="{{$cci->loadingno}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="loadingno">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="loadingno" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="exitport">EXIT PORT</label>
         <input type="text" value="{{$cci->exitport}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersname"  name="exitport">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskimportersname"  name="exitport" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="destination">DESTINATION:</label>
         <input type="text" value="{{$cci->destination}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskdestination"  name="destination">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskdestination"  name="destination" {{$ro}}>
     </div>
 </div>
 </div>
@@ -230,77 +235,77 @@
     <div class="form-group">
         <label for="pif_description">DESCRIPTION:</label>
         <input type="text" value="{{$cci->pif_description}}"  class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="pif_description">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="pif_description" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="units">UNITS:</label>
         <input type="text" value="{{$cci->pif_units}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunits"  name="pif_units">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunits"  name="pif_units" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_inspectiondate">INSPECTION DATE:</label>
         <input type="date" value="{{$cci->pif_inspectiondate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="pif_inspectiondate">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="pif_inspectiondate" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_quantity">QUANTITY (B/L)</label>
-        <input type="text" value="{{$cci->pif_quantity}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quantity">
+        <input type="number" value="{{$cci->pif_quantity}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quantity" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_quantity">QUALITY</label>
         <input type="text" value="{{$cci->pif_quality}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quality">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quality" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_unitprice">UNIT PRICE:</label>
-        <input type="text" value="{{$cci->pif_unitprice}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice"  name="pif_unitprice">
+        <input type="number" value="{{$cci->pif_unitprice}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice"  name="pif_unitprice" {{$ro}}>
     </div>
     <div class="form-group" style="display: none">
         <label for="pif_pakaging">PACKAGING:</label>
         <input type="text" value="{{$cci->pif_pakaging}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_pakaging"  name="pif_pakaging">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_pakaging"  name="pif_pakaging" {{$ro}}>
     </div>
     <div class="form-group" style="display: none">
         <label for="pif_gweight">GROSS WEIGHT:</label>
         <input type="text" value="{{$cci->pif_gweight}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_gweight"  name="pif_gweight">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_gweight"  name="pif_gweight" {{$ro}}>
     </div>
     <div class="form-group" style="display: none">
         <label for="pif_nweight" >NET WEIGHT:</label>
         <input type="text" value="{{$cci->pif_nweight}}"class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_nweight"  name="pif_nweight">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_nweight"  name="pif_nweight" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_valueofgoods">VALUE OF GOODS:</label>
-        <input type="text" value="{{$cci->pif_valueofgoods}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  name="pif_valueofgoods">
+        <input type="number" value="{{$cci->pif_valueofgoods}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  name="pif_valueofgoods" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
-        <input type="text" value="{{$cci->pif_freightcharges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_freightcharges"  name="pif_freightcharges">
+        <input type="number" value="{{$cci->pif_freightcharges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_freightcharges"  name="pif_freightcharges" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_insurance">INSURANCE:</label>
-        <input type="text" value="{{$cci->pif_insurance}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_insurance"  name="pif_insurance">
+        <input type="number" value="{{$cci->pif_insurance}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_insurance"  name="pif_insurance" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_bos">BASIS OF SALE:</label>
         <input type="text" value="{{$cci->pif_bos}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_bos"  name="pif_bos">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_bos"  name="pif_bos" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_forexproc">FOREX PROCEEDS:</label>
         <input type="text" value="{{$cci->pif_forexproc}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_forexproc"  name="pif_forexproc">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_forexproc"  name="pif_forexproc" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_exchangedate">EXCHANGE DATE:</label>
         <input type="date" value="{{$cci->pif_exchange_date}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  name="pif_exchange_date">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  name="pif_exchange_date" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_currency">CURRENCY:</label>
@@ -323,30 +328,30 @@
     </div>
     <div class="form-group">
         <label for="pif_exchange_rate">EXCHANGE RATE:</label>
-        <input type="text" value="{{$cci->pif_exchange_rate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_exchangerate"  name="pif_exchange_rate">
+        <input type="number" value="{{$cci->pif_exchange_rate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_exchangerate"  name="pif_exchange_rate" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_ness_charge_payable">NESS CHARGES PAYABLE:</label>
-        <input type="text" value="{{$cci->pif_ness_charge_payable}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskepif_ness_charge_payable"  name="pif_ness_charge_payable">
+        <input type="number" value="{{$cci->pif_ness_charge_payable}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskepif_ness_charge_payable"  name="pif_ness_charge_payable" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_receipt_no">RECEIPT NUMBER:</label>
         <input type="text" value="{{$cci->pif_receipt_no}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinvoicedate"  name="pif_receipt_no">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinvoicedate"  name="pif_receipt_no" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_actual_ness_charges">ACTUAL NESS CHARGE:</label>
-        <input type="text" value="{{$cci->pif_actual_ness_charges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_actual_ness_charges"  name="pif_actual_ness_charges">
+        <input type="number" value="{{$cci->pif_actual_ness_charges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_actual_ness_charges"  name="pif_actual_ness_charges" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_balance_paid">BALANCE PAID:</label>
-        <input type="text" value="{{$cci->pif_balance_paid}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid"  name="pif_balance_paid">
+        <input type="number" value="{{$cci->pif_balance_paid}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid"  name="pif_balance_paid" {{$ro}}>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
         <label for="pif_receopt_no2">RECEIPT NUMBER #2:</label>
         <input type="text" value="{{$cci->pif_receipt_no2}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_receopt_no2"  name="pif_receopt_no2">
@@ -386,25 +391,26 @@
             echo '<div style="margin-top: 15px;">
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> VALIDATE CERTIFICATE</button>
     </div>';
+
+    echo '<div style="margin-top: 15px;">
+   <a href="/newcert/edit?id='.$cci->id.'&action=RESET" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"> RESET TO DRAFT</a>
+   </div>';
         }
         elseif ($cci->status=='VALIDATED') {
            
-           echo '<div class="form-group" style= display:none ">
+           echo '
+          
+           <div class="form-group" style= display:none ">
        <label for="action">ACTION</label>
        <input type="text" value=" APPROVAL" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskid"  name="action">
    </div>';
            echo '<div style="margin-top: 15px;">
    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> APPROVE CERTIFICATE</button>
-   </div>';
-
-   echo '<div class="form-group" style= display:none ">
-       <label for="action">ACTION</label>
-       <input type="text" value=" RESET" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-       text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskid"  name="action">
-   </div>';
-           echo '<div style="margin-top: 15px;">
-   <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"> RESET TO DRAFT</button>
+   </div>'
+   ;
+     echo '<div style="margin-top: 15px;">
+   <a href="/newcert/edit?id='.$cci->id.'&action=RESET" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"> RESET TO DRAFT</a>
    </div>';
        }
        elseif ($cci->status=='APPROVED') {
@@ -424,5 +430,17 @@
 </div>
     </form>
 </div>
-</x-app-layout>
 
+</x-app-layout>
+<script>
+document.getElementById("taskpif_valueofgoods").onchange = function() {myFunction()};
+
+function myFunction() {
+  var x = document.getElementById("taskepif_ness_charge_payable");
+
+  var y=document.getElementById("taskpif_valueofgoods");
+  var ness=y.value *0.0012;
+  x.value =ness.toFixed(2); 
+}
+
+    </script>

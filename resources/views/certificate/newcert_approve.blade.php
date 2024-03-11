@@ -55,7 +55,7 @@
                             <th style="width: 10%;border: 1px solid;">STATUS</th>
                             <th style="width: 5%;border: 1px solid;">VIEW</th>
                         </thead>
-                        @foreach ( $ccilist as $cic)
+                        @forelse ( $ccilist as $cic)
                         <tr>
                             <td style="border: 1px solid;">{{$cic->cci_id}}</td>
                             <td style="border: 1px solid;">{{$cic->exportersname}}</td>
@@ -63,7 +63,11 @@
                             <td style="border: 1px solid;">{{$cic->status}}</td>
                             <td style="border: 1px solid; padding:8px"><a href="/newcert/getcert?id={{$cic->id}}" class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">VIEW</a></td>
                         </tr>
-                        @endforeach 
+                        @empty
+                        <tr>
+                            <td colspan="5" style="text-align: center"><i>NO CERTIFICATES TO BE  {{$qmode}} </i></td>
+                        </tr>
+                        @endforelse
                             
 
                     </table>  

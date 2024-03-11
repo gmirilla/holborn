@@ -1,5 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <x-app-layout>
-
 <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">PRE-SHIPMENT INSPECTION FINDINGS</div>
 @if ($errors->any())
@@ -125,7 +125,7 @@
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid"  name="pif_balance_paid">
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display: none">
         <label for="pif_receopt_no2">RECEIPT NUMBER#2:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_receopt_no2"  name="pif_receopt_no2">
@@ -142,4 +142,17 @@
 </form>
 </div>
 </x-app-layout>
-
+<script>
+    document.getElementById("taskpif_valueofgoods").onchange = function() {myFunction()};
+    
+    function myFunction() {
+      var x = document.getElementById("taskepif_ness_charge_payable");
+      console.log("here");
+      var y=document.getElementById("taskpif_valueofgoods");
+      var ness=y.value *0.0012;
+      x.value =ness.toFixed(2); 
+    }
+    
+        </script>
+    
+    taskepif_ness_charge_payable
