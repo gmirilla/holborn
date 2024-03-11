@@ -338,7 +338,9 @@ class CicController extends Controller
 
 
         $shpdetails->save(); 
-       return view('certificate.newcert_inspd')->with('cci',$shpdetails);
+
+        $curr=Currency::all();
+       return view('certificate.newcert_inspd')->with('cci',$shpdetails)->with('curr',$curr);
         }
      catch (\Throwable $th) {
         return redirect('/printerror');
@@ -569,6 +571,22 @@ class CicController extends Controller
                 }
 
                 break;
+                case "RESET":
+
+                    if (str_contains($user->role, 'VALIDATOR')){
+    
+                        $cci->status="DRAFT";
+    
+                    }
+                    else{
+                        $error= "INSUFFECIENT PRIVILEGES. PLEASE CONTACT AN ADMINISTRATOR";
+                        return redirect('/printerror')->with('error',$error);
+    
+    
+                    }
+    
+                    break;
+    
 
             case "APPROVAL":
                 if (str_contains($user->role, 'APPROVER')){
