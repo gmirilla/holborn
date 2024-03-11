@@ -15,7 +15,8 @@
 <form action="/newcert/createstep3" method="post">
     {{ csrf_field() }}
     <div class="grid grid-cols-4 gap-4">
-    <div class="form-group">
+        <!-- element hidden at client request -->
+    <div class="form-group" style="display: none">
         <label for="pif_hscode">H.S. CODE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_hscode"  name="pif_hscode">
@@ -36,7 +37,7 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="pif_inspectiondate">
     </div>
     <div class="form-group">
-        <label for="pif_quantity">QUANTITY</label>
+        <label for="pif_quantity">QUANTITY (B/L)</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quantity">
     </div>
@@ -45,9 +46,9 @@
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice"  name="pif_unitprice">
     </div>
-    <div class="form-group">
-        <label for="pif_pakaging">PACKAGING:</label>
-        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+    <div class="form-group" style="display:none">
+        <label for="pif_pakaging" >PACKAGING:</label>
+        <input type="text" value="oil" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_pakaging"  name="pif_pakaging">
     </div>
     <div class="form-group">
@@ -125,7 +126,7 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid"  name="pif_balance_paid">
     </div>
     <div class="form-group">
-        <label for="pif_receopt_no2">RECEIPT NUMBER:</label>
+        <label for="pif_receopt_no2">RECEIPT NUMBER#2:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_receopt_no2"  name="pif_receopt_no2">
     </div>

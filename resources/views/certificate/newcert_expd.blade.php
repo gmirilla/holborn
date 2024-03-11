@@ -144,9 +144,10 @@
             @endforeach
         </select>
     </div>
-    <div class="form-group">
+    <!--form element hidden at user request-->
+    <div class="form-group" style="display: none">
         <label for="exporterinvoicevalue">EXPORTER INVOICE VALUE:</label>
-        <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="0" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterinvoicevalue"  name="exporterinvoicevalue">
     </div>
     <div class="form-group">

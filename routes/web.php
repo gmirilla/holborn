@@ -20,6 +20,8 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
+Route::get('/check/printcert', [CicController::class, 'printcert']);
+
 Route::get('/printerror', function () {
    return view('printerror');
 });
@@ -41,15 +43,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/newcert/printcert', [CicController::class, 'printcert']);
     Route::get('/newcert/approval_list',[CicController::class, 'toApprove']);
     Route::get('/newcert/validate',[CicController::class, 'toValidate']);
-    Route::get('/newcert/getcert',[CicController::class, 'getcert']);
     Route::post('/newcert/edit',[CicController::class, 'editcert']);
     Route::get('/newcert/approved',[CicController::class, 'showApprove']);
     Route::get('/newcert/qapprove',[CicController::class, 'qapprove']);
     Route::get('/newcert/qreject',[CicController::class, 'qreject']);
+    Route::get('/newcert/getcert',[CicController::class, 'getcert']);
     Route::get('/newcert/getcciwa',[CicController::class, 'getcciwa']);
-
-    Route::get('/dashboard', [CicController::class, 'homeDashboard'])->name('dashboard');
-    
+    Route::get('/dashboard', [CicController::class, 'homeDashboard'])->name('dashboard');  
     Route::get('/get_csv', [CsvController::class, 'get_csv'])->name('get_csv');
     Route::get('/newcert/genreport',function(){
         return view('certificate.gen_reports');
