@@ -116,7 +116,7 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  name="units">
     </div>
     <div class="form-group">
-        <label for="quantity">QUANTITY:</label>
+        <label for="quantity">NOMINATED QUANTITY:</label>
         <input type="text" value="{{$cci->quantity}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskquantity"  name="quantity">
     </div>
@@ -160,7 +160,7 @@
             @endforeach
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display: none">
         <label for="exporterinvoicevalue">EXPORTER INVOICE VALUE:</label>
         <input type="text" value="{{$cci->exporterinvoicevalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterinvoicevalue"  name="exporterinvoicevalue">
@@ -188,7 +188,7 @@
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
     <div class="grid grid-cols-6 gap-2">
     <div class="form-group">
-        <label for='shipdate'>SHIPMENT DATE</label>
+        <label for='shipdate'>SHIPMENT (B/L) DATE</label>
         <input type="date" value="{{$cci->shipdate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknxpform_no"  name="shipdate">
     </div>
@@ -222,7 +222,7 @@
 <div class="card-header text-center font-weight-bold" style="color: #fff">PRE-SHIPMENT INSPECTION FINDINGS</div>
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
     <div class="grid grid-cols-6 gap-2">
-    <div class="form-group">
+    <div class="form-group" style="display: none">
         <label for="pif_hscode">H.S. CODE:</label>
         <input type="text" value="{{$cci->pif_hscode}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_hscode"  name="pif_hscode">
@@ -243,7 +243,7 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="pif_inspectiondate">
     </div>
     <div class="form-group">
-        <label for="pif_quantity">QUANTITY</label>
+        <label for="pif_quantity">QUANTITY (B/L)</label>
         <input type="text" value="{{$cci->pif_quantity}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quantity">
     </div>
@@ -257,18 +257,18 @@
         <input type="text" value="{{$cci->pif_unitprice}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice"  name="pif_unitprice">
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display: none">
         <label for="pif_pakaging">PACKAGING:</label>
         <input type="text" value="{{$cci->pif_pakaging}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_pakaging"  name="pif_pakaging">
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display: none">
         <label for="pif_gweight">GROSS WEIGHT:</label>
         <input type="text" value="{{$cci->pif_gweight}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_gweight"  name="pif_gweight">
     </div>
-    <div class="form-group">
-        <label for="pif_nweight">NET WEIGHT:</label>
+    <div class="form-group" style="display: none">
+        <label for="pif_nweight" >NET WEIGHT:</label>
         <input type="text" value="{{$cci->pif_nweight}}"class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_nweight"  name="pif_nweight">
     </div>
@@ -293,7 +293,7 @@
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_bos"  name="pif_bos">
     </div>
     <div class="form-group">
-        <label for="pif_forexproc">FOREIGN EXCHANGE PROCEEDS:</label>
+        <label for="pif_forexproc">FOREX PROCEEDS:</label>
         <input type="text" value="{{$cci->pif_forexproc}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_forexproc"  name="pif_forexproc">
     </div>
