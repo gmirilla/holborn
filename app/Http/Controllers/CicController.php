@@ -18,7 +18,7 @@ class CicController extends Controller
      */
     public function index(Request $request)
     {
-        $ciclist=cic::latest()->paginate(5);
+        $ciclist=cic::latest()->paginate(10);
 
         dd( $ciclist);
 
