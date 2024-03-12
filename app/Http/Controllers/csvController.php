@@ -7,23 +7,22 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class csvController extends Controller
 {
      //
      public function get_csv(Request $request){
 
-        
-      
 
         if ($request->name==Null) {
-            $ccis = cic::whereBetween('updated_at', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')->get();
+            $ccis = cic::whereBetween(DB::raw('DATE(updated_at)'), [$request->datefrom, $request->dateto])->where('status', 'APPROVED')->get();
 
 
         }
         else {
             $search=strtoupper($request->name);
-            $ccis = cic::whereBetween('updated_at', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')
+            $ccis = cic::whereBetween(DB::raw('DATE(updated_at)'), [$request->datefrom, $request->dateto])->where('status', 'APPROVED')
             ->where('exportersname','LIKE', "%{$search}%")->get();
         }
 
