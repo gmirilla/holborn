@@ -602,7 +602,7 @@ class CicController extends Controller
         $cci=cic::find($request->input('id'));
         $curr=Currency::all();
 
-        return view('certificate.showcert')->with('cci',$cci)->with('curr',$curr);
+        return redirect('/dashboard');
     }
 
     
