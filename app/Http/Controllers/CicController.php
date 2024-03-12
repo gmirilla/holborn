@@ -29,10 +29,18 @@ class CicController extends Controller
         /**
      * Display a listing of the resource.
      */
-    public function homeDashboard()
+    public function homeDashboard(Request $request)
     {
-        $cicList=cic::paginate(15);
+        if($request->searchcci_id==null){
+            $cicList=cic::paginate(15);
 
+        }
+        else{
+            
+            $cicList=cic::where('cci_id', 'like', "%{$request->searchcci_id}%")->paginate(15);
+
+        }
+ 
         return view('dashboard')->with('ccilist', $cicList);
         
     }
