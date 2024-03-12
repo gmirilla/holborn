@@ -170,14 +170,14 @@
         <input type="text" value="{{$cci->exporterinvoicevalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterinvoicevalue"  name="exporterinvoicevalue" {{$ro}}>
     </div>
-    <div class="form-group" style="display: none;">
+    <div class="form-group" >
         <label for="freightcharges"  >FREIGHT CHARGES:</label>
-        <input type="number" value="{{$cci->freightcharges}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->freightcharges}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskfreightcharges"  name="freightcharges" {{$ro}}>
     </div>
     <div class="form-group"  style="display: none;">
         <label for="insurance">INSURANCE:</label>
-        <input type="number" value="{{$cci->insurance}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->insurance}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinsurance"  name="insurance" {{$ro}}>
     </div>
     <div class="form-group">
@@ -249,7 +249,7 @@
     </div>
     <div class="form-group">
         <label for="pif_quantity">QUANTITY (B/L)</label>
-        <input type="number" value="{{$cci->pif_quantity}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_quantity}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quantity" {{$ro}}>
     </div>
     <div class="form-group">
@@ -259,7 +259,7 @@
     </div>
     <div class="form-group">
         <label for="pif_unitprice">UNIT PRICE:</label>
-        <input type="number" value="{{$cci->pif_unitprice}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_unitprice}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice"  name="pif_unitprice" {{$ro}}>
     </div>
     <div class="form-group" style="display: none">
@@ -279,17 +279,17 @@
     </div>
     <div class="form-group">
         <label for="pif_valueofgoods">VALUE OF GOODS:</label>
-        <input type="number" value="{{$cci->pif_valueofgoods}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_valueofgoods}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  name="pif_valueofgoods" {{$ro}}>
     </div>
     <div class="form-group"  style="display: none;">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
-        <input type="number" value="{{$cci->pif_freightcharges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_freightcharges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_freightcharges"  name="pif_freightcharges" {{$ro}}>
     </div>
     <div class="form-group" style="display: none;">
         <label for="pif_insurance">INSURANCE:</label>
-        <input type="number" value="{{$cci->pif_insurance}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_insurance}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_insurance"  name="pif_insurance" {{$ro}}>
     </div>
     <div class="form-group">
@@ -328,12 +328,12 @@
     </div>
     <div class="form-group">
         <label for="pif_exchange_rate">EXCHANGE RATE:</label>
-        <input type="number" value="{{$cci->pif_exchange_rate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_exchange_rate}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_exchangerate"  name="pif_exchange_rate" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_ness_charge_payable">NESS CHARGES PAYABLE:</label>
-        <input type="number" value="{{$cci->pif_ness_charge_payable}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_ness_charge_payable}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskepif_ness_charge_payable"  name="pif_ness_charge_payable" {{$ro}}>
     </div>
     <div class="form-group">
@@ -343,12 +343,12 @@
     </div>
     <div class="form-group">
         <label for="pif_actual_ness_charges">ACTUAL NESS CHARGE:</label>
-        <input type="number" value="{{$cci->pif_actual_ness_charges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_actual_ness_charges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_actual_ness_charges"  name="pif_actual_ness_charges" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="pif_balance_paid">BALANCE PAID:</label>
-        <input type="number" value="{{$cci->pif_balance_paid}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="number" step="any" value="{{$cci->pif_balance_paid}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid"  name="pif_balance_paid" {{$ro}}>
     </div>
     <div class="form-group" style="display:none">
