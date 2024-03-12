@@ -13,9 +13,13 @@ class csvController extends Controller
      //
      public function get_csv(Request $request){
 
+        
+      
 
         if ($request->name==Null) {
             $ccis = cic::whereBetween('updated_at', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')->get();
+
+
         }
         else {
             $search=strtoupper($request->name);
