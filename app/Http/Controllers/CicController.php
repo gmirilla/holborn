@@ -210,7 +210,7 @@ class CicController extends Controller
         // Available alpha caracters
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $alpha = $characters[rand(0, strlen($characters) - 1)];
-        $pin = mt_rand(1000000, 9999999) . mt_rand(1000000, 9999999);
+        $pin = mt_rand(1000, 9999) . mt_rand(10000, 99999);
         $year = date('Y');
         $numeric = str_shuffle($pin);
         $cic->cci_id = $alpha . '/' . $year . '/' . $numeric;

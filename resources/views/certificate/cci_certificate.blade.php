@@ -88,7 +88,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
             </td>
             <td>
                 EXPORTER INVOICE NO.:{{$cci->exp_invoice}} <br/>
-                INVOICE DATE: {{$cci->invoice_date}}
+                INVOICE DATE: {{$cci->invoice_date}}<br/>
                 CURRENCY: {{$cci->currency}}<br/>
                 PAYMENT TERMS: {{$cci->payment_terms}}<br/>
                <br/>
