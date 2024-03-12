@@ -15,11 +15,11 @@ class csvController extends Controller
 
 
         if ($request->name==Null) {
-            $ccis = cic::whereBetween('date', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')->get();
+            $ccis = cic::whereBetween('updated_at', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')->get();
         }
         else {
             $search=strtoupper($request->name);
-            $ccis = cic::whereBetween('date', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')
+            $ccis = cic::whereBetween('updated_at', [$request->datefrom, $request->dateto])->where('status', 'APPROVED')
             ->where('exportersname','LIKE', "%{$search}%")->get();
         }
 
