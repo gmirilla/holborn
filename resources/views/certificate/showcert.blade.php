@@ -122,7 +122,7 @@
     </div>
     <div class="form-group">
         <label for="quantity">NOMINATED QUANTITY:</label>
-        <input type="number" value="{{$cci->quantity}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="{{$cci->quantity}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskquantity"  name="quantity" {{$ro}}>
     </div>
     <div class="form-group">
@@ -170,19 +170,19 @@
         <input type="text" value="{{$cci->exporterinvoicevalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskexporterinvoicevalue"  name="exporterinvoicevalue" {{$ro}}>
     </div>
-    <div class="form-group">
-        <label for="freightcharges">FREIGHT CHARGES:</label>
+    <div class="form-group" style="display: none;">
+        <label for="freightcharges"  >FREIGHT CHARGES:</label>
         <input type="number" value="{{$cci->freightcharges}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskfreightcharges"  name="freightcharges" {{$ro}}>
     </div>
-    <div class="form-group">
+    <div class="form-group"  style="display: none;">
         <label for="insurance">INSURANCE:</label>
         <input type="number" value="{{$cci->insurance}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinsurance"  name="insurance" {{$ro}}>
     </div>
     <div class="form-group">
         <label for="totalvalue">TOTAL VALUE:</label>
-        <input type="number" value="{{$cci->totalvalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <input type="text" value="{{$cci->totalvalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue"  name="totalvalue" {{$ro}}>
     </div>
 </div>
@@ -282,12 +282,12 @@
         <input type="number" value="{{$cci->pif_valueofgoods}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  name="pif_valueofgoods" {{$ro}}>
     </div>
-    <div class="form-group">
+    <div class="form-group"  style="display: none;">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
         <input type="number" value="{{$cci->pif_freightcharges}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_freightcharges"  name="pif_freightcharges" {{$ro}}>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display: none;">
         <label for="pif_insurance">INSURANCE:</label>
         <input type="number" value="{{$cci->pif_insurance}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_insurance"  name="pif_insurance" {{$ro}}>

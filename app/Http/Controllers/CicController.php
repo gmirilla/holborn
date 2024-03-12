@@ -262,7 +262,7 @@ class CicController extends Controller
         'quantity'=> 'required',
         'unitprice'=> 'required','exp_invoice'=> 'required',
         'invoice_date'=> 'required','payment_terms'=> 'required', 'currency'=> 'required',
-        'exporterinvoicevalue'=> 'required|numeric','freightcharges'=> 'required|numeric','insurance'=> 'required|numeric',
+        'exporterinvoicevalue'=> 'required|numeric',
         'totalvalue'=> 'required|numeric'
         ]);
       
@@ -298,8 +298,8 @@ class CicController extends Controller
         $expdetails->payment_terms = $request->payment_terms;
         $expdetails->currency= $request->currency;
         $expdetails->exporterinvoicevalue = $request->exporterinvoicevalue;
-        $expdetails->freightcharges = $request->freightcharges;
-        $expdetails->insurance = $request->insurance;
+       // $expdetails->freightcharges = $request->freightcharges;
+        //$expdetails->insurance = $request->insurance;
         $expdetails->totalvalue = $request->totalvalue;
      
 
@@ -367,8 +367,8 @@ class CicController extends Controller
         $pinspdetails->pif_quality = $request->pif_quality;
         $pinspdetails->pif_valueofgoods = $request->pif_valueofgoods;
         $pinspdetails->pif_valueinwords = $request->pif_valueinwords;
-        $pinspdetails->pif_freightcharges = $request->pif_freightcharges;
-        $pinspdetails->pif_insurance = $request->pif_insurance;
+       // $pinspdetails->pif_freightcharges = $request->pif_freightcharges;
+       // $pinspdetails->pif_insurance = $request->pif_insurance;
         $pinspdetails->pif_bos = $request->pif_bos;
         $pinspdetails->pif_forexproc = $request->pif_forexproc;
         $pinspdetails->pif_exchange_date = $request->pif_exchange_date;
@@ -455,7 +455,8 @@ class CicController extends Controller
                     'quantity' => 'required',
                     'unitprice' => 'required', 'exp_invoice' => 'required',
                     'invoice_date' => 'required', 'payment_terms' => 'required', 'currency' => 'required',
-                    'exporterinvoicevalue' => 'required', 'freightcharges' => 'required', 'insurance' => 'required',
+                    'exporterinvoicevalue' => 'required',
+                    // 'freightcharges' => 'required', 'insurance' => 'required',
                     'totalvalue' => 'required',
                     'shipdate' => 'required',
                     'shipagent' => 'required',
@@ -471,8 +472,8 @@ class CicController extends Controller
                     'pif_unitprice' => 'required',
                     'pif_quality' => 'required',
                     'pif_valueofgoods' => 'required',
-                    'pif_freightcharges' => 'required',
-                    'pif_insurance' => 'required',
+                    //'pif_freightcharges' => 'required',
+                    //'pif_insurance' => 'required',
                     'pif_bos' => 'required',
                     'pif_forexproc' => 'required',
                     'pif_exchange_date' => 'required',
@@ -495,8 +496,8 @@ class CicController extends Controller
                 $cci->pif_unitprice = $request->pif_unitprice;
                 $cci->pif_quality = $request->pif_quality;
                 $cci->pif_valueofgoods = $request->pif_valueofgoods;
-                $cci->pif_freightcharges = $request->pif_freightcharges;
-                $cci->pif_insurance = $request->pif_insurance;
+              //  $cci->pif_freightcharges = $request->pif_freightcharges;
+               // $cci->pif_insurance = $request->pif_insurance;
                 $cci->pif_bos = $request->pif_bos;
                 $cci->pif_forexproc = $request->pif_forexproc;
                 $cci->pif_exchange_date = $request->pif_exchange_date;
@@ -539,8 +540,8 @@ class CicController extends Controller
                 $cci->payment_terms = $request->payment_terms;
                 $cci->currency = $request->currency;
                 $cci->exporterinvoicevalue = $request->exporterinvoicevalue;
-                $cci->freightcharges = $request->freightcharges;
-                $cci->insurance = $request->insurance;
+                //$cci->freightcharges = $request->freightcharges;
+               // $cci->insurance = $request->insurance;
                 $cci->totalvalue = $request->totalvalue;
 
                 $cci->status="SUBMITTED";
