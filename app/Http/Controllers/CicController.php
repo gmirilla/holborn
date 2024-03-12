@@ -265,7 +265,8 @@ class CicController extends Controller
         'exporterinvoicevalue'=> 'required|numeric',
         'totalvalue'=> 'required|numeric'
         ]);
-      
+      //clean up currency
+      $cleanCurrency=str_replace(["{", "}"],"",$request->currency );
         
 
 
@@ -296,7 +297,7 @@ class CicController extends Controller
         $expdetails->exp_invoice = $request->exp_invoice;
         $expdetails->invoice_date = $request->invoice_date;
         $expdetails->payment_terms = $request->payment_terms;
-        $expdetails->currency= $request->currency;
+        $expdetails->currency= $cleanCurrency;
         $expdetails->exporterinvoicevalue = $request->exporterinvoicevalue;
        // $expdetails->freightcharges = $request->freightcharges;
         //$expdetails->insurance = $request->insurance;
@@ -372,7 +373,7 @@ class CicController extends Controller
         $pinspdetails->pif_bos = $request->pif_bos;
         $pinspdetails->pif_forexproc = $request->pif_forexproc;
         $pinspdetails->pif_exchange_date = $request->pif_exchange_date;
-        $pinspdetails->pif_currency = $request->pif_currency;
+        $pinspdetails->pif_currency =str_replace(["{", "}"],"",$request->pif_currency );
         $pinspdetails->pif_exchange_rate = $request->pif_exchange_rate;
         $pinspdetails->pif_ness_charge_payable = $request->pif_ness_charge_payable;
         $pinspdetails->pif_receipt_no = $request->pif_receipt_no;
@@ -501,7 +502,7 @@ class CicController extends Controller
                 $cci->pif_bos = $request->pif_bos;
                 $cci->pif_forexproc = $request->pif_forexproc;
                 $cci->pif_exchange_date = $request->pif_exchange_date;
-                $cci->pif_currency = $request->pif_currency;
+                $cci->pif_currency = str_replace(["{", "}"],"",$request->pif_currency );
                 $cci->pif_exchange_rate = $request->pif_exchange_rate;
                 $cci->pif_ness_charge_payable = $request->pif_ness_charge_payable;
                 $cci->pif_receipt_no = $request->pif_receipt_no;
@@ -538,7 +539,7 @@ class CicController extends Controller
                 $cci->exp_invoice = $request->exp_invoice;
                 $cci->invoice_date = $request->invoice_date;
                 $cci->payment_terms = $request->payment_terms;
-                $cci->currency = $request->currency;
+                $cci->currency = str_replace(["{", "}"],"",$request->currency );
                 $cci->exporterinvoicevalue = $request->exporterinvoicevalue;
                 //$cci->freightcharges = $request->freightcharges;
                // $cci->insurance = $request->insurance;
