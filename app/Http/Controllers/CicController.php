@@ -18,7 +18,7 @@ class CicController extends Controller
      */
     public function index(Request $request)
     {
-        $ciclist=cic::latest()->paginate(5);
+        $ciclist=cic::latest()->paginate(10);
 
         dd( $ciclist);
 
@@ -602,7 +602,7 @@ class CicController extends Controller
         $cci=cic::find($request->input('id'));
         $curr=Currency::all();
 
-        return view('certificate.showcert')->with('cci',$cci)->with('curr',$curr);
+        return redirect('/dashboard');
     }
 
     
