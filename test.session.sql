@@ -1,1 +1,1 @@
-UPDATE users set role="0, VALIDATOR, APPROVER"
+select * from cics WHERE date(updated_at) between '2024-03-07' and '2024-03-07';
