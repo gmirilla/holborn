@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/newcert/getcert',[CicController::class, 'getcert']);
     Route::get('/newcert/getcciwa',[CicController::class, 'getcciwa']);
     Route::get('/dashboard', [CicController::class, 'homeDashboard'])->name('dashboard');  
+    Route::post('/dashboard', [CicController::class, 'homeDashboard'])->name('dashboard');  
     Route::get('/get_csv', [CsvController::class, 'get_csv'])->name('get_csv');
     Route::get('/newcert/genreport',function(){
         return view('certificate.gen_reports');
