@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Currency;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\NumberGen;
 
 
 class CicController extends Controller
@@ -213,19 +214,28 @@ class CicController extends Controller
         $curr=Currency::all();
 
         $cic = new cic();
-        //dd($curr);
+        $num=NumberGen::find(1);
 
         // Available alpha caracters
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $alpha = $characters[rand(0, strlen($characters) - 1)];
-        $pin = mt_rand(1000, 9999) . mt_rand(10000, 99999);
+        //$pin = mt_rand(1000, 9999) . mt_rand(10000, 99999);
+        //$numeric = str_shuffle($pin);
+        $numeric = sprintf('%06d', $num->current);
         $year = date('Y');
-        $numeric = str_shuffle($pin);
-        $cic->cci_id = $alpha . '/' . $year . '/' . $numeric;
+        $month=date('m');
+      
+        $cic->cci_id = $alpha . '/' . $year . '/'. $month.'/'. $numeric;
         $cic->year = $year;
         $cic->status = 'DRAFT';
         $cic->created_by = $user->name;
         
+       
+        //Update Number Generation Table
+        $num->last=$num->current;
+        $num->current=$num->current+$num->step;
+        $num->save();
+
     
        return view('certificate.newcert_expd')->with('cci',$cic)->with('curr',$curr);
         }

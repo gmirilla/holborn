@@ -1,1 +1,19 @@
-select * from cics WHERE date(updated_at) between '2024-03-07' and '2024-03-07';
+insert into number_gens ( 
+    'id',
+        'min',
+        'max',
+        'padding',
+        'last',
+        'current',
+        'step',
+        'Active'
+
+)
+
+VALUES
+(
+    1, 1,999999,
+    true,0,1,1,true
+)
+
+
