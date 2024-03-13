@@ -17,7 +17,7 @@
         <label for="cci_id">CCI ID:</label>
         <input type="text" value={{$cci->cci_id}} class="form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="taskncci_id"  name="cci_id">
     </div>
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-5 gap-3">
     <div class="form-group">
         <label for="nxpform_no" class="block text-sm font-medium leading-6 text-gray-900">N.X.P FORM NO:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 

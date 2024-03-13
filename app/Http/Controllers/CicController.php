@@ -33,12 +33,13 @@ class CicController extends Controller
     public function homeDashboard(Request $request)
     {
         if($request->searchcci_id==null){
-            $cicList=cic::paginate(15);
+            $cicList=cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(15);
 
         }
         else{
             
-            $cicList=cic::where('cci_id', 'like', "%{$request->searchcci_id}%")->orderby('created_at', 'desc')->paginate(15);
+            $cicList=cic::where('cci_id', 'like', "%{$request->searchcci_id}%")
+            ->orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(15);
 
         }
  
@@ -320,6 +321,7 @@ class CicController extends Controller
        // $expdetails->freightcharges = $request->freightcharges;
         //$expdetails->insurance = $request->insurance;
         $expdetails->totalvalue = $request->totalvalue;
+        
      
 
         $expdetails->save();
@@ -356,6 +358,7 @@ class CicController extends Controller
         $shpdetails->loadingno = $request->loadingno;
         $shpdetails->exitport = $request->exitport;
         $shpdetails->destination = $request->destination;
+        $shpdetails->pointofexit=$request->pointofexit;
 
 
         $shpdetails->save(); 
@@ -400,7 +403,7 @@ class CicController extends Controller
         $pinspdetails->status='SUBMITTED';
 
         $pinspdetails->save(); 
-        $cciList= cic::all();   
+        $cciList= cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(15);
        return redirect('dashboard')->with('ccilist',$cciList);
     }
 
@@ -532,6 +535,7 @@ class CicController extends Controller
                 $cci->vessel = $request->vessel;
                 $cci->loadingno = $request->loadingno;
                 $cci->exitport = $request->exitport;
+                $cci->pointofexit=$request->pointofexit;
                 $cci->destination = $request->destination;
                 $cci->nxpform_no = $request->nxpform_no;
                 $cci->year = $request->year;
@@ -619,7 +623,7 @@ class CicController extends Controller
         }
         $cci->save();   
 
-        $cci=cic::find($request->input('id'));
+        $cci=cic::find($request->input('id'))->paginate(15);
         $curr=Currency::all();
 
         return redirect('/dashboard');

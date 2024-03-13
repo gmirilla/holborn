@@ -35,7 +35,8 @@ class cic extends Model
         'pif_bos', 'pif_forexproc','pif_exchange_date', 'pif_currency',
          'pif_exchange_rate', 'pif_ness_charge_payable', 'pif_receipt_no',
          'pif_actual_ness_charges', 'pif_balance_paid', 'pif_receopt_no2',
-         'status','created_by', 'approved_by'
+         'status','created_by', 'approved_by','pointofexit'
+
 
 
     ];

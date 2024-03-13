@@ -60,6 +60,7 @@ class csvController extends Controller
             "SHIPMENT DATE",
             "COUNTRY OF DESTINATION",
             "POINT OF EXPORT",
+            "POINT OF EXIT",
             "DESIGNATED BANK",
             "FOB VALUE NAIRA",
             "NESS FEE (0.12% OF FOB)",
@@ -104,7 +105,7 @@ class csvController extends Controller
                 $each_cci->cci_id,'n/a',$each_cci->date,
                 $each_cci->nxpform_no,$each_cci->exporterbank,$each_cci->pif_inspectiondate,
                 $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,$each_cci->unitprice,
-                $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->importerbank,$each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate,
+                $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->pointofexit,$each_cci->importerbank,$each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate,
                 $each_cci->pif_ness_charge_payable,$each_cci->pif_valueofgoods,$dollar,$Euro,$GBP,$each_cci->pif_exchange_date,
                 $strdate,$each_cci->pif_receipt_no,$each_cci->pif_exchange_rate,
 
