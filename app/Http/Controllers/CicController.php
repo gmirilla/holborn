@@ -410,6 +410,7 @@ class CicController extends Controller
 
        try {
         $cci=cic::find($request->input('id'));
+        dd($cci);
         if($cci->status=='APPROVED'){
         $qrcols=cic::select('cci_id', 'exportersname','nxpform_no', 'exp_invoice', 'date');
         $jsoncci=json_encode($qrcols);
