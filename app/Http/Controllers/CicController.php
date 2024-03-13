@@ -38,7 +38,7 @@ class CicController extends Controller
         }
         else{
             
-            $cicList=cic::where('cci_id', 'like', "%{$request->searchcci_id}%")->paginate(15);
+            $cicList=cic::where('cci_id', 'like', "%{$request->searchcci_id}%")->orderby('created_at', 'desc')->paginate(15);
 
         }
  
@@ -217,15 +217,15 @@ class CicController extends Controller
         $num=NumberGen::find(1);
 
         // Available alpha caracters
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $alpha = $characters[rand(0, strlen($characters) - 1)];
+        //$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        //$alpha = $characters[rand(0, strlen($characters) - 1)];
         //$pin = mt_rand(1000, 9999) . mt_rand(10000, 99999);
         //$numeric = str_shuffle($pin);
         $numeric = sprintf('%06d', $num->current);
         $year = date('Y');
         $month=date('m');
       
-        $cic->cci_id = $alpha . '/' . $year . '/'. $month.'/'. $numeric;
+        $cic->cci_id = 'NT/' . $year . '/'. $month.'/'. $numeric;
         $cic->year = $year;
         $cic->status = 'DRAFT';
         $cic->created_by = $user->name;

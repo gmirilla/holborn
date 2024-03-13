@@ -52,17 +52,21 @@
                     <table class="table-auto table table-bordered border border-slate-500 border-separate data-table " 
                     id="laravel_datatable" style="color:black; border: 1px solid;">
                         <thead class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left" style="background-color: blue"> 
-                            <th style="width: 15%; border: 1px solid;">CCI No</th>
-                            <th style="width: 25%;border: 1px solid;">EXPORTER</th>
-                            <th style="width: 25%;border: 1px solid;">IMPORTER</th>
+                            <th style="width: 10%; border: 1px solid;">CCI No</th>
+                            <th style="width: 15%; border: 1px solid;">EXPORTER</th>
+                            <th style="width: 15%;border: 1px solid;">IMPORTER</th>
+                            <th style="width: 25%;border: 1px solid;">GOODS TO EXPORT</th>
+                            <th style="width: 10%;border: 1px solid;">VALUE OF GOODS</th>
                             <th style="width: 10%;border: 1px solid;">STATUS</th>
-                            <th style="width: 10%;border: 1px solid;"></th>
+                            <th style="width: 15%;border: 1px solid;"></th>
                         </thead>
                         @foreach ( $ccilist as $cic)
                         <tr >
                             <td style="border: 1px solid;">{{$cic->cci_id}}</td>
                             <td style="border: 1px solid;">{{$cic->exportersname}}</td>
                             <td style="border: 1px solid;">{{$cic->importersname}}</td>
+                            <td style="border: 1px solid;">{{$cic->pif_description}}</td>
+                            <td style="border: 1px solid;">{{number_format($cic->pif_valueofgoods,2)}}</td>
                             <td style="border: 1px solid;">{{$cic->status}}</td>
                             <td style="border: 1px solid;padding:8px;"><a href='newcert/getcert?id={{$cic->id}}' class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> VIEW </td>
                         </tr>

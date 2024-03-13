@@ -55,9 +55,11 @@ class csvController extends Controller
             "EXPORTER NAME",
             "EXPORTED PRODUCTS",
             "HS CODE",
+            "QUANTITY",
+            "UNIT PRICE",
             "SHIPMENT DATE",
             "COUNTRY OF DESTINATION",
-            "POINT OF EXIT",
+            "POINT OF EXPORT",
             "DESIGNATED BANK",
             "FOB VALUE NAIRA",
             "NESS FEE (0.12% OF FOB)",
@@ -91,14 +93,20 @@ class csvController extends Controller
 
             }
 
+            //Calculate the repatration date
+            $rdate=date_add((date_create($each_cci->shipdate)), date_interval_create_from_date_string("90 day"));
+            $strdate= date_format($rdate, 'd-M-Y');
+
+
+
             fputcsv($handle, [
                 $sno,
                 $each_cci->cci_id,'n/a',$each_cci->date,
                 $each_cci->nxpform_no,$each_cci->exporterbank,$each_cci->pif_inspectiondate,
-                $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,
+                $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,$each_cci->unitprice,
                 $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->importerbank,$each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate,
                 $each_cci->pif_ness_charge_payable,$each_cci->pif_valueofgoods,$dollar,$Euro,$GBP,$each_cci->pif_exchange_date,
-                $each_cci->pif_exchange_date,$each_cci->pif_receipt_no,$each_cci->pif_exchange_rate,
+                $strdate,$each_cci->pif_receipt_no,$each_cci->pif_exchange_rate,
 
 
             ]);

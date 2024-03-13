@@ -100,7 +100,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
             <td>
                 SHIPMENT (B/L) DATE: {{$cci->shipdate}}<br/>
                
-                PORT/POINT POINT:  {{$cci->exitport}}<br/>
+                POINT OF EXPORT:  {{$cci->exitport}}<br/>
                 LOADING REF NO: {{$cci->loading_no}}<br/>
             </td>
             <td>
