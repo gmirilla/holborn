@@ -230,7 +230,6 @@ class CicController extends Controller
         $cic->status = 'DRAFT';
         $cic->created_by = $user->name;
         
-        echo $cic->cci_id;
        
         //Update Number Generation Table
         $num->last=$num->current;
