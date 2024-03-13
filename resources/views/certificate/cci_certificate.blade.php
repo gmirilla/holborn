@@ -15,7 +15,7 @@
 
         <h5 style="text-align: center" >CLEAN CERTIFICATE OF INSPECTION <br/>
 ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
-<h6 style="text-align: center" ><u>http://24.199.119.118/check/print?id={{$cci->id}}</u></h6>
+<h6 style="text-align: center" ><u>http://24.199.119.118/check/printcert?id={{$cci->id}}</u></h6>
 
 <div style="font-size: 11px; text-align:center;"><strong>CCI Number: {{$cci->cci_id}}</strong></div>
     </div>
