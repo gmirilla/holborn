@@ -78,13 +78,13 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
         </tr>
         <tr>
             <td>
-                GOODS TO BE EXPORTED: {{$cci->descriptionofgoods}}<br/>
-                UNITS: {{$cci->units}}<br/>
-                NOMINATED QUANTITY:{{ $cci->quantity}} <br/>
-                UNIT PRICE:{{$cci->unitprice}} <br/>
-                BASIS OF SALE: {{$cci->basisofsale}}<br/>
+                <b>GOODS TO BE EXPORTED:</b> {{$cci->descriptionofgoods}}<br/>
+                <b>UNITS:</b> {{$cci->units}}<br/>
+                <b>NOMINATED QUANTITY:</b>{{ $cci->quantity}} <br/>
+                <b>UNIT PRICE:</b>{{$cci->unitprice}} <br/>
+                <b>BASIS OF SALE:</b> {{$cci->basisofsale}}<br/>
                 <br/>
-                EXPORTER'S FOB INVOICE VALUE:{{number_format($cci->exporterinvoicevalue,2)}}<br/>
+                <b>EXPORTER'S FOB INVOICE VALUE:</b>{{number_format($cci->exporterinvoicevalue,4)}}<br/>
             </td>
             <td>
                 EXPORTER INVOICE NO.:{{$cci->exp_invoice}} <br/>
@@ -92,7 +92,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 CURRENCY: {{$cci->currency}}<br/>
                 PAYMENT TERMS: {{$cci->payment_terms}}<br/>
                <br/>
-                TOTAL INVOICE VALUE:{{number_format($cci->totalvalue,2)}}<br/>
+                TOTAL INVOICE VALUE:{{number_format($cci->totalvalue,4)}}<br/>
             </td>
         </tr>
         <tr><td colspan=4 style="text-align: center; background-color: black ; color:white">DECLARED SHIPPING DETAILS</td></tr>
@@ -120,20 +120,20 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 QUALITY: {{$cci->pif_quality}}<br/>
                 INSPECTION DATE: {{$cci->pif_inspectiondate}}<br/>
                 UNITS: {{$cci->pif_units}}<br/>
-                (B/L) QUANTITY: {{$cci->pif_quantity}}<br/>
+                (B/L) QUANTITY: {{number_format($cci->pif_quantity,4)}}<br/>
                 UNIT PRICE: {{$cci->pif_unitprice}}<br/>
-                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,2)}}<br/>
-                NESS CHARGES PAYABLE:{{number_format($cci->pif_ness_charge_payable,2)}}<br/>
+                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,4)}}<br/>
+                NESS CHARGES PAYABLE:{{number_format($cci->pif_ness_charge_payable,4)}}<br/>
                 
             </td>
             <td>
                 RECEIPT NUMBER :{{$cci->pif_receipt_no}}<br/>
                 CURRENCY:{{$cci->pif_currency}}<br/>
-                EXCHANGE RATE: {{$cci->pif_exchange_rate}}<br/><br/>
-                (B/L) QUANTITY: {{$cci->quantity}}<br/>
+                EXCHANGE RATE: {{number_format($cci->pif_exchange_rate,4)}}<br/><br/>
+                (B/L) QUANTITY: {{number_format($cci->quantity,4)}}<br/>
                 UNIT PRICE: {{$cci->pif_unitprice}}<br/>
-                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,2)}}<br/> 
-                NESS CHARGES PAID: {{number_format($cci->pif_actual_ness_charges,2)}}<br/>
+                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,4)}}<br/> 
+                NESS CHARGES PAID: {{number_format($cci->pif_actual_ness_charges,4)}}<br/>
 
 
             </td>
@@ -143,9 +143,9 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
         </tr>
         <tr>
             <td colspan=4>
-                FOB VALUE OF GOODS OUTSTANDING: {{number_format(($cci->pif_valueofgoods - $cci->pif_valueofgoods),2)}}  <br/>
+                FOB VALUE OF GOODS OUTSTANDING: {{number_format(($cci->pif_valueofgoods - $cci->pif_valueofgoods),4)}}  <br/>
 
-                NESS CHARGES OUTSTANDING: {{number_format(($cci->pif_ness_charge_payable) - ($cci->pif_actual_ness_charges),2)}}<br/>
+                NESS CHARGES OUTSTANDING: {{number_format(($cci->pif_ness_charge_payable) - ($cci->pif_actual_ness_charges),4)}}<br/>
 
             </td>
         </tr>

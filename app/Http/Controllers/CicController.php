@@ -19,7 +19,7 @@ class CicController extends Controller
      */
     public function index(Request $request)
     {
-        $ciclist=cic::latest()->paginate(10);
+        $ciclist=cic::latest()->paginate(25);
 
         dd( $ciclist);
 
@@ -33,13 +33,13 @@ class CicController extends Controller
     public function homeDashboard(Request $request)
     {
         if($request->searchcci_id==null){
-            $cicList=cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(15);
+            $cicList=cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(25);
 
         }
         else{
             
             $cicList=cic::where('cci_id', 'like', "%{$request->searchcci_id}%")
-            ->orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(15);
+            ->orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(25);
 
         }
  
@@ -403,7 +403,7 @@ class CicController extends Controller
         $pinspdetails->status='SUBMITTED';
 
         $pinspdetails->save(); 
-        $cciList= cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(15);
+        $cciList= cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(25);
        return redirect('dashboard')->with('ccilist',$cciList);
     }
 
@@ -587,16 +587,23 @@ class CicController extends Controller
 
                 break;
                 case "RESET":
+                
 
-                    if (str_contains($user->role, 'VALIDATOR')){
+                    if (str_contains($user->role, 'VALIDATOR') && $cci->status=="SUBMITTED"){
     
                         $cci->status="DRAFT";
     
                     }
+                    elseif (str_contains($user->role, 'APPROVER') && $cci->status=="VALIDATED") {
+                        $cci->status="SUBMITTED";
+                    }
+                    elseif (str_contains($user->role, 'SUPERUSER') && $cci->status=="APPROVED") {
+                        
+                        $cci->status="VALIDATED";
+                    }
                     else{
                         $error= "INSUFFECIENT PRIVILEGES. PLEASE CONTACT AN ADMINISTRATOR";
-                        return redirect('/printerror')->with('error',$error);
-    
+                        return redirect('/printerror')->with('error',$error); 
     
                     }
     
@@ -623,7 +630,7 @@ class CicController extends Controller
         }
         $cci->save();   
 
-        $cci=cic::find($request->input('id'))->paginate(15);
+        $cci=cic::find($request->input('id'))->paginate(25);
         $curr=Currency::all();
 
         return redirect('/dashboard');
