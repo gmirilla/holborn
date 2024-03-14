@@ -49,7 +49,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="margin-top:10px;">
             <div class="bg-white dark:bg-white-800 overflow:auto shadow-sm sm:rounded-lg">
                 <div class="p-6 text-black-900 dark:text-black-100">
-                    <table class="table-auto table table-bordered border border-slate-500 border-separate data-table " 
+                    <table class="table-auto table table-bordered border border-slate-500 border-separate data-table" 
                     id="laravel_datatable" style="color:black; border: 1px solid;">
                         <thead class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left" style="background-color: blue"> 
                             <th style="width: 10%; border: 1px solid;">CCI No</th>

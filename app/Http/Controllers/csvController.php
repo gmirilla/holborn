@@ -79,7 +79,7 @@ class csvController extends Controller
         foreach ($ccis as $each_cci) {
 
             //check for currency used and assign for report
-            $dollar=0; $GBP=0; $Euro=0;
+            $dollar=0.00; $GBP=0.00; $Euro=0.00;
             switch ($each_cci->pif_currency) {
                 case 'USD':
                     $dollar = $each_cci->pif_valueofgoods;
@@ -104,9 +104,12 @@ class csvController extends Controller
                 $sno,
                 $each_cci->cci_id,'n/a',$each_cci->date,
                 $each_cci->nxpform_no,$each_cci->exporterbank,$each_cci->pif_inspectiondate,
-                $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,$each_cci->unitprice,
-                $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->pointofexit,$each_cci->importerbank,$each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate,
-                $each_cci->pif_ness_charge_payable,$each_cci->pif_valueofgoods,$dollar,$Euro,$GBP,$each_cci->pif_exchange_date,
+                $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,number_format($each_cci->unitprice,4),
+                $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->pointofexit,$each_cci->importerbank,
+               number_format(($each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate),4),
+                number_format($each_cci->pif_ness_charge_payable,4),
+                number_format($each_cci->pif_valueofgoods,4),number_format($dollar,4),number_format($Euro,4),number_format($GBP,4),
+                $each_cci->pif_exchange_date,
                 $strdate,$each_cci->pif_receipt_no,$each_cci->pif_exchange_rate,
 
 

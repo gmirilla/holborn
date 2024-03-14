@@ -24,32 +24,32 @@
     <div class="form-group">
         <label for="pif_description">DESCRIPTION:</label>
         <input type="text" value=""  class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  name="pif_description">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno"  required name="pif_description">
     </div>
     <div class="form-group">
         <label for="units">UNITS:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunits"  name="pif_units">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunits"  required name="pif_units">
     </div>
     <div class="form-group">
         <label for="pif_inspectiondate">INSPECTION DATE:</label>
         <input type="date" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin"  name="pif_inspectiondate">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskorigin" required  name="pif_inspectiondate">
     </div>
     <div class="form-group">
         <label for="pif_quality">QUALITY</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquality"  name="pif_quality">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquality"  required name="pif_quality">
     </div>
     <div class="form-group">
         <label for="pif_quantity">QUANTITY (B/L)</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  name="pif_quantity">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifquantity"  required name="pif_quantity">
     </div>
     <div class="form-group">
         <label for="pif_unitprice">UNIT PRICE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice"  name="pif_unitprice">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpifunitprice" required  name="pif_unitprice">
     </div>
     <div class="form-group" style="display:none">
         <label for="pif_pakaging" >PACKAGING:</label>
@@ -69,7 +69,7 @@
     <div class="form-group">
         <label for="pif_valueofgoods">VALUE OF GOODS:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  name="pif_valueofgoods">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  required name="pif_valueofgoods">
     </div>
     <div class="form-group" style="display: none;">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
@@ -84,21 +84,21 @@
     <div class="form-group">
         <label for="pif_bos">BASIS OF SALE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_bos"  name="pif_bos">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_bos"  required name="pif_bos">
     </div>
     <div class="form-group">
         <label for="pif_forexproc">FOREIGN EXCHANGE PROCEEDS:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_forexproc"  name="pif_forexproc">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_forexproc"  required name="pif_forexproc">
     </div>
     <div class="form-group">
         <label for="pif_exchangedate">EXCHAGE DATE:</label>
         <input type="date" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  name="pif_exchange_date">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunits"  required name="pif_exchange_date">
     </div>
     <div class="form-group">
         <label for="pif_currency">CURRENCY:</label>
-        <select id="pif_currency" name="pif_currency" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+        <select id="pif_currency" required  name="pif_currency" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
             @foreach ($curr as $currs )
             <option value='{{$currs->abbr}}'> {{$currs->name}} </option>
@@ -108,27 +108,27 @@
     <div class="form-group">
         <label for="pif_exchange_rate">EXCHANGE RATE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_exchangerate"  name="pif_exchange_rate">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_exchangerate"   required name="pif_exchange_rate">
     </div>
     <div class="form-group">
         <label for="pif_ness_charge_payable">NESS CHARGES PAYABLE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskepif_ness_charge_payable"  name="pif_ness_charge_payable">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskepif_ness_charge_payable" required  name="pif_ness_charge_payable">
     </div>
     <div class="form-group">
         <label for="pif_receipt_no">RECEIPT NUMBER:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinvoicedate"  name="pif_receipt_no">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskinvoicedate" required  name="pif_receipt_no">
     </div>
     <div class="form-group">
         <label for="pif_actual_ness_charges">ACTUAL NESS CHARGE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_actual_ness_charges"  name="pif_actual_ness_charges">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_actual_ness_charges" required  name="pif_actual_ness_charges">
     </div>
     <div class="form-group">
         <label for="pif_balance_paid">BALANCE PAID:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid"  name="pif_balance_paid">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_balance_paid" required  name="pif_balance_paid">
     </div>
     <div class="form-group" style="display: none">
         <label for="pif_receopt_no2">RECEIPT NUMBER#2:</label>
@@ -160,4 +160,3 @@
     
         </script>
     
-    taskepif_ness_charge_payable

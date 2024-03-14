@@ -46,7 +46,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h3 style="text-align: center">CERTIFICATES TO BE  {{$qmode}}</h3> 
                     <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px; min-height:400px overflow:auto;">
-                    <table class="table-auto table table-bordered border border-slate-500 border-separate" 
+                    <table class="table-auto table table-bordered border border-slate-500 border-separate even:bg-blue-gray-50/50" 
                     id="laravel_datatable" style="color:black; border: 1px solid; size:80%">
                         <thead class="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left" style="background-color: blue"> 
                             <th style="width: 15%; border: 1px solid;">CCI No</th>
