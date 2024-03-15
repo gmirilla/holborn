@@ -44,7 +44,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 <b>YEAR:</b> {{$cci->year}}
             </td> 
             <td>
-                <b>DATE:</b> {{$cci->date}}
+                <b>DATE:</b> {{$cci->appr_date}}
             </td>  
 
         </tr>

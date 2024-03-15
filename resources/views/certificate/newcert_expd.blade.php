@@ -1,16 +1,9 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <x-app-layout>
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">EXPORTER'S DECLARATION </div>
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+    @if ($errors->any()) < div class = "alert alert-danger" > < ul > @foreach ($errors->all() as $error) < li > { { $error } } < / li > @endforeach < / ul > < / div > @endif
 <form action="/newcert/createstep1" method="post">
     {{ csrf_field() }}
     <div class="form-group" style="display:none ;">
@@ -28,7 +21,7 @@
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno" required  name="nepcno">
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
         <label for="year">YEAR:</label>
         <input type="text" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->year}} data-input required name="year">
@@ -37,7 +30,7 @@
     <div class="form-group">
         <label for="date">Date:</label>
         <input type="date" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->year}} data-input required name="date">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{date('Y-m-d')}} data-input required name="date" readonly>
   
     </div>
     <div class="form-group">
@@ -118,7 +111,7 @@
     <div class="form-group">
         <label for="unitprice">UNITPRICE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunitprice"   required name="unitprice">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskunitprice" required name="unitprice">
     </div>
     <div class="form-group">
         <label for="exp_invoice">EXPORTER'S INVOICE NO:</label>
@@ -163,7 +156,7 @@
     <div class="form-group">
         <label for="totalvalue">TOTAL VALUE:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue"   required name="totalvalue">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue" required readonly name="totalvalue">
     </div>
     <div class="form-group" style="display:none ;">
         <label for="cc_id">ID:</label>
@@ -183,3 +176,20 @@
 </div>
 </x-app-layout>
 
+<script>
+    document.getElementById("taskquantity").onchange = function() {myFunction()};
+    document.getElementById("taskunitprice").onchange = function() {myFunction()};
+    
+    function myFunction() {
+      var x = document.getElementById("taskquantity");
+      var y=document.getElementById("taskunitprice");
+      var z=document.getElementById("tasktotalvalue");
+    
+      tvalue=y.value *x.value;
+      z.value =tvalue.toFixed(4); 
+    }
+        </script>
+
+
+
+ 

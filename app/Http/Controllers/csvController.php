@@ -49,6 +49,7 @@ class csvController extends Controller
             "CCI NO",
             "SVP CCI NO",
             "CCI DATE",
+            "APRROVAL DATE",
             "NXP NO",
             "NXP ISSUING BANK",
             "INSPECTION DATE",
@@ -102,9 +103,10 @@ class csvController extends Controller
 
             fputcsv($handle, [
                 $sno,
-                $each_cci->cci_id,'n/a',$each_cci->date,
+                $each_cci->cci_id,'n/a',date_format($each_cci->date,'d-M-Y'),date_format($each_cci->appr_date,'d-M-Y'),
                 $each_cci->nxpform_no,$each_cci->exporterbank,$each_cci->pif_inspectiondate,
-                $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,number_format($each_cci->unitprice,4),
+                $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,
+                number_format($each_cci->pif_unitprice,4),
                 $each_cci->shipdate,$each_cci->destination,$each_cci->exitport,$each_cci->pointofexit,$each_cci->importerbank,
                number_format(($each_cci->pif_valueofgoods * $each_cci->pif_exchange_rate),4),
                 number_format($each_cci->pif_ness_charge_payable,4),
