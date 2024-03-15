@@ -597,6 +597,9 @@ class CicController extends Controller
                     elseif (str_contains($user->role, 'APPROVER') && $cci->status=="VALIDATED") {
                         $cci->status="SUBMITTED";
                     }
+                    elseif (str_contains($user->role, 'VALIDATOR') && $cci->status=="VALIDATED") {
+                        $cci->status="DRAFT";
+                    }
                     elseif (str_contains($user->role, 'SUPERUSER') && $cci->status=="APPROVED") {
                         
                         $cci->status="VALIDATED";
@@ -613,6 +616,8 @@ class CicController extends Controller
             case "APPROVAL":
                 if (str_contains($user->role, 'APPROVER')){
                 $cci->status="APPROVED";
+                $cci->appr_date=date('Y-m-d');
+                $cci->approved_by=$user->name;
                 }
                 else{
                     $error= "INSUFFECIENT PRIVILEGES. PLEASE CONTACT AN ADMINISTRATOR";

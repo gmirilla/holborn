@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <x-app-layout>
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
     <div class="card-header text-center font-weight-bold" style="color: #fff">DECLARED EXPORT DETAILS </div>
@@ -38,7 +39,7 @@
         <input type="text" value='{{$cci->nepc_no}} ' class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasknepcno" required   name="nepcno" {{$ro}}>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display: none">
         <label for="year">YEAR:</label>
         <input type="text" required  class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->year}} data-input name="year" {{$ro}}>
@@ -47,7 +48,7 @@
     <div class="form-group">
         <label for="date">Date:</label>
         <input type="date" required  class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->date}} data-input name="date" {{$ro}}>
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" value={{$cci->date}} data-input name="date" readonly>
   
     </div>
     <div class="form-group">
@@ -183,7 +184,7 @@
     <div class="form-group">
         <label for="totalvalue">TOTAL VALUE:</label>
         <input type="text" value="{{$cci->totalvalue}} " class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue" required  name="totalvalue" {{$ro}}>
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="tasktotalvalue" required  name="totalvalue" readonly>
     </div>
 </div>
 </div>
@@ -448,5 +449,17 @@ function myFunction() {
   var ness=y.value *0.0012;
   x.value =ness.toFixed(2); 
 }
+
+document.getElementById("taskquantity").onchange = function() {myFunction2()};
+    document.getElementById("taskunitprice").onchange = function() {myFunction2()};
+    
+    function myFunction2() {
+      var x = document.getElementById("taskquantity");
+      var y=document.getElementById("taskunitprice");
+      var z=document.getElementById("tasktotalvalue");
+    
+      tvalue=y.value *x.value;
+      z.value =tvalue.toFixed(4); 
+    }
 
     </script>
