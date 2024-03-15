@@ -286,7 +286,7 @@
     <div class="form-group">
         <label for="pif_valueofgoods">VALUE OF GOODS:</label>
         <input type="number" step="any" value="{{$cci->pif_valueofgoods}}" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods" required  name="pif_valueofgoods" {{$ro}}>
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods" required  name="pif_valueofgoods" readonly>
     </div>
     <div class="form-group"  style="display: none;">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
@@ -441,6 +441,10 @@
 </x-app-layout>
 <script>
 document.getElementById("taskpif_valueofgoods").onchange = function() {myFunction()};
+document.getElementById("taskquantity").onchange = function() {myFunction2()};
+document.getElementById("taskunitprice").onchange = function() {myFunction2()};
+document.getElementById("taskpifquantity").onchange=function(){myFunction3()};
+document.getElementById("taskpifunitprice").onchange=function(){myFunction3()};
 
 function myFunction() {
   var x = document.getElementById("taskepif_ness_charge_payable");
@@ -450,8 +454,7 @@ function myFunction() {
   x.value =ness.toFixed(2); 
 }
 
-document.getElementById("taskquantity").onchange = function() {myFunction2()};
-    document.getElementById("taskunitprice").onchange = function() {myFunction2()};
+
     
     function myFunction2() {
       var x = document.getElementById("taskquantity");
@@ -461,5 +464,20 @@ document.getElementById("taskquantity").onchange = function() {myFunction2()};
       tvalue=y.value *x.value;
       z.value =tvalue.toFixed(4); 
     }
+
+    function myFunction3() {
+      var a = document.getElementById("taskpifquantity");
+      var b = document.getElementById("taskpifunitprice");
+      var c=document.getElementById("taskpif_valueofgoods");
+      var x = document.getElementById("taskepif_ness_charge_payable");
+
+      var tvalue=a.value*b.value;
+      var ness=tvalue *0.0012;
+      x.value =ness.toFixed(4); 
+      c.value =tvalue.toFixed(4); 
+    }
+    
+
+
 
     </script>

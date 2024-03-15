@@ -69,7 +69,7 @@
     <div class="form-group">
         <label for="pif_valueofgoods">VALUE OF GOODS:</label>
         <input type="text" value="" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
-        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  required name="pif_valueofgoods">
+        text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskpif_valueofgoods"  required  readonly name="pif_valueofgoods">
     </div>
     <div class="form-group" style="display: none;">
         <label for="pif_freightcharges">FREIGHT CHARGES:</label>
@@ -149,13 +149,28 @@
 </x-app-layout>
 <script>
     document.getElementById("taskpif_valueofgoods").onchange = function() {myFunction()};
+    document.getElementById("taskpifquantity").onchange=function(){myFunction2()};
+    document.getElementById("taskpifunitprice").onchange=function(){myFunction2()};
+    
     
     function myFunction() {
       var x = document.getElementById("taskepif_ness_charge_payable");
-      console.log("here");
+
       var y=document.getElementById("taskpif_valueofgoods");
       var ness=y.value *0.0012;
       x.value =ness.toFixed(2); 
+    }
+
+    function myFunction2() {
+      var a = document.getElementById("taskpifquantity");
+      var b = document.getElementById("taskpifunitprice");
+      var c=document.getElementById("taskpif_valueofgoods");
+      var x = document.getElementById("taskepif_ness_charge_payable");
+
+      var tvalue=a.value*b.value;
+      var ness=tvalue *0.0012;
+      x.value =ness.toFixed(4); 
+      c.value =tvalue.toFixed(4); 
     }
     
         </script>
