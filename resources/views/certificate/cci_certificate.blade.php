@@ -87,27 +87,27 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
                 <b>EXPORTER'S FOB INVOICE VALUE:</b>{{number_format($cci->exporterinvoicevalue,4)}}<br/>
             </td>
             <td>
-                EXPORTER INVOICE NO.:{{$cci->exp_invoice}} <br/>
-                INVOICE DATE: {{$cci->invoice_date}}<br/>
-                CURRENCY: {{$cci->currency}}<br/>
-                PAYMENT TERMS: {{$cci->payment_terms}}<br/>
+                <b>EXPORTER INVOICE NO.:</b>{{$cci->exp_invoice}} <br/>
+                <b>INVOICE DATE:</b> {{$cci->invoice_date}}<br/>
+                <b>CURRENCY: </b>{{$cci->currency}}<br/>
+                <b>PAYMENT TERMS:</b> {{$cci->payment_terms}}<br/>
                <br/>
-                TOTAL INVOICE VALUE:{{number_format($cci->totalvalue,4)}}<br/>
+                <b>TOTAL INVOICE VALUE:</b>{{number_format($cci->totalvalue,4)}}<br/>
             </td>
         </tr>
         <tr><td colspan=4 style="text-align: center; background-color: black ; color:white">DECLARED SHIPPING DETAILS</td></tr>
         <tr>
             <td>
-                SHIPMENT (B/L) DATE: {{$cci->shipdate}}<br/>
+                <b>SHIPMENT (B/L) DATE:</b> {{ $cci->shipdate}}<br/>
                
-                POINT OF EXPORT:  {{$cci->exitport}}<br/>
-                POINT OF EXIT:  {{$cci->pointofexit}}<br/>
-                LOADING REF NO: {{$cci->loading_no}}<br/>
+                <b>POINT OF EXPORT: </b> {{$cci->exitport}}<br/>
+                <b>POINT OF EXIT: </b> {{$cci->pointofexit}}<br/>
+                <b>LOADING REF NO: </b>{{$cci->loading_no}}<br/>
             </td>
             <td>
-                CARRIER/VESSEL: {{$cci->vessel}}<br/>
-                SHIPPING AGENT: {{$cci->shipagent}}<br/>
-                DESTINATION: {{$cci->destination}}<br/>
+                <b>CARRIER/VESSEL: </b>{{$cci->vessel}}<br/>
+                <b>SHIPPING AGENT: </b>{{$cci->shipagent}}<br/>
+                <b>DESTINATION: </b>{{$cci->destination}}<br/>
             </td>
         </tr>
         <tr>
@@ -116,24 +116,24 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
         </tr>    
         <tr>
             <td>
-                GOODS TO BE EXPORTED:{{$cci->pif_description}} <br/>
-                QUALITY: {{$cci->pif_quality}}<br/>
-                INSPECTION DATE: {{$cci->pif_inspectiondate}}<br/>
-                UNITS: {{$cci->pif_units}}<br/>
-                (B/L) QUANTITY: {{number_format($cci->pif_quantity,4)}}<br/>
-                UNIT PRICE: {{$cci->pif_unitprice}}<br/>
-                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,4)}}<br/>
-                NESS CHARGES PAYABLE:{{number_format($cci->pif_ness_charge_payable,4)}}<br/>
+                <b>GOODS TO BE EXPORTED:</b>{{$cci->pif_description}} <br/>
+                <b>QUALITY: </b>{{$cci->pif_quality}}<br/>
+                <b>INSPECTION DATE: </b>{{ $cci->pif_inspectiondate}}<br/>
+                <b>UNITS: </b>{{$cci->pif_units}}<br/>
+                <b>(B/L) QUANTITY:</b> {{number_format($cci->pif_quantity,4)}}<br/>
+                <b>UNIT PRICE: </b>{{$cci->pif_unitprice}}<br/>
+                <b>TOTAL FOB VALUE OF GOODS:</b> {{number_format($cci->pif_valueofgoods,4)}}<br/>
+                <b>NESS CHARGES PAYABLE:</b>{{number_format($cci->pif_ness_charge_payable,4)}}<br/>
                 
             </td>
             <td>
-                RECEIPT NUMBER :{{$cci->pif_receipt_no}}<br/>
-                CURRENCY:{{$cci->pif_currency}}<br/>
-                EXCHANGE RATE: {{number_format($cci->pif_exchange_rate,4)}}<br/><br/>
-                (B/L) QUANTITY: {{number_format($cci->quantity,4)}}<br/>
-                UNIT PRICE: {{$cci->pif_unitprice}}<br/>
-                TOTAL FOB VALUE OF GOODS: {{number_format($cci->pif_valueofgoods,4)}}<br/> 
-                NESS CHARGES PAID: {{number_format($cci->pif_actual_ness_charges,4)}}<br/>
+                <b>RECEIPT NUMBER :</b>{{$cci->pif_receipt_no}}<br/>
+                <b>CURRENCY:</b>{{$cci->pif_currency}}<br/>
+                <b>EXCHANGE RATE: </b>{{number_format($cci->pif_exchange_rate,4)}}<br/><br/>
+                <b>(B/L) QUANTITY:</b> {{number_format($cci->quantity,4)}}<br/>
+                <b>UNIT PRICE: </b>{{$cci->pif_unitprice}}<br/>
+                <b>TOTAL FOB VALUE OF GOODS:</b> {{number_format($cci->pif_valueofgoods,4)}}<br/> 
+                <b>NESS CHARGES PAID: </b>{{number_format($cci->pif_actual_ness_charges,4)}}<br/>
 
 
             </td>
