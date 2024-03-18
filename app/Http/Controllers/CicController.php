@@ -21,7 +21,7 @@ class CicController extends Controller
     {
         $ciclist=cic::latest()->paginate(25);
 
-        dd( $ciclist);
+       
 
         return view('certificate.newcert_dashboard',compact('ciclist') );
         
