@@ -98,12 +98,16 @@ class csvController extends Controller
             //Calculate the repatration date
             $rdate=date_add((date_create($each_cci->shipdate)), date_interval_create_from_date_string("90 day"));
             $strdate= date_format($rdate, 'd-M-Y');
+            // convert fieldto date
+
+            $ccidate=date_create($each_cci->date);
+            $apprdate= date_create($each_cci->appr_date);
 
 
 
             fputcsv($handle, [
                 $sno,
-                $each_cci->cci_id,'n/a',date_format($each_cci->date,'d-M-Y'),date_format($each_cci->appr_date,'d-M-Y'),
+                $each_cci->cci_id,'n/a',date_format($ccidate,'d-M-Y'),date_format($apprdate,'d-M-Y'),
                 $each_cci->nxpform_no,$each_cci->exporterbank,$each_cci->pif_inspectiondate,
                 $each_cci->exportersname,$each_cci->descriptionofgoods,$each_cci->hscode,$each_cci->pif_quantity,
                 number_format($each_cci->pif_unitprice,4),
