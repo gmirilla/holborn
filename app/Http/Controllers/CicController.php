@@ -630,6 +630,14 @@ class CicController extends Controller
                 return redirect('/newcert/printcert?id='.$cci->id);
                 break;
 
+            case "CANCEL":
+                 if(is_null($cci->approved_by)){
+
+                    $cci->status="CANCELLED";
+
+                    break;
+                }
+
      
 
         }
