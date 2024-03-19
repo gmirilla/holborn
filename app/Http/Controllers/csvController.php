@@ -83,14 +83,14 @@ class csvController extends Controller
             $dollar=0.00; $GBP=0.00; $Euro=0.00;
             switch ($each_cci->pif_currency) {
                 case 'USD':
-                    $dollar = $each_cci->pif_valueofgoods;
+                    $dollar = round($each_cci->pif_valueofgoods,4);
                     break;
                 case 'GBP':
-                    $GBP=$each_cci->pif_valueofgoods;
+                    $GBP=round($each_cci->pif_valueofgoods,4);
                     break;
 
                 case 'EUR':
-                    $Euro=$each_cci->pif_valueofgoods;
+                    $Euro=round($each_cci->pif_valueofgoods,4);
                     break;
 
             }
@@ -102,7 +102,6 @@ class csvController extends Controller
 
             $ccidate=date_create($each_cci->date);
             $apprdate= date_create($each_cci->appr_date);
-
 
 
             fputcsv($handle, [
@@ -117,7 +116,6 @@ class csvController extends Controller
                 number_format($each_cci->pif_valueofgoods,4),number_format($dollar,4),number_format($Euro,4),number_format($GBP,4),
                 $each_cci->pif_exchange_date,
                 $strdate,$each_cci->pif_receipt_no,$each_cci->pif_exchange_rate,
-
 
             ]);
             $sno++;

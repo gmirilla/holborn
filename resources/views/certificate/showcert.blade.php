@@ -385,7 +385,11 @@
     </div>';
             echo '<div style="margin-top: 15px;">
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SUBMIT FOR VALIDATION</button>
-    </div>';
+    </div>
+    <div style="margin-top: 15px;">
+   <a href="/newcert/edit?id='.$cci->id.'&action=CANCEL" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"> CANCEL DRAFT</a>
+   </div>';
+        
         }
         elseif ($cci->status=='SUBMITTED') {
            
