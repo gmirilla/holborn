@@ -3,8 +3,18 @@
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">EXPORTER'S DECLARATION </div>
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
-    @if ($errors->any()) < div class = "alert alert-danger" > < ul > @foreach ($errors->all() as $error) < li > { { $error } } < / li > @endforeach < / ul > < / div > @endif
-<form action="/newcert/createstep1" method="post">
+    @if ($errors->any())
+    <div class="alert alert-danger" style="color: red">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+    <form action="/newcert/createstep1" method="post">
     {{ csrf_field() }}
     <div class="form-group" style="display:none ;">
         <label for="cci_id">CCI ID:</label>
