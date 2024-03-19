@@ -5,7 +5,7 @@
     <div class="card-header text-center font-weight-bold" style="color: #fff">DECLARED EXPORT DETAILS </div>
     <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
         @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" style="color: red">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

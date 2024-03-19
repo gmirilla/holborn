@@ -261,7 +261,7 @@ class CicController extends Controller
         
         
         $validatedData = $request->validate([
-        'nxpform_no' => 'required',
+        'nxpform_no' => 'required|unique:cics,nxpform_no',
         'nepcno' => 'required',
         'year' => 'required|numeric',
         'hscode' => 'required',
@@ -456,9 +456,20 @@ class CicController extends Controller
         switch($editaction){
             case "SUBMIT FOR VALIDATION":
                 ##VALIDATE REQUEST DATA TO REDO
+
+                ## VALidate nxpform no is unique
+                if($cci->nxpform_no!=$request->nxpform_no){
+                    $validatedData=$request->validate([
+                        'nxpform_no' => 'required|unique:cics,nxpform_no'
+                    ]);
+
+
+                }
+
+            
   
                 $validatedData = $request->validate([
-                    'nxpform_no' => 'required',
+
                     'nepcno' => 'required',
                     'year' => 'required|numeric',
                     'hscode' => 'required',
