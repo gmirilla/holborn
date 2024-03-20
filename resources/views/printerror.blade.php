@@ -1,5 +1,5 @@
 <x-app-layout>
-<div style="background: white;">
+<div style="background: white;" style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
     ERROR PAGE!!
     @if ($errors->any())
     <div class="alert alert-danger">

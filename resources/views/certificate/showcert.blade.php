@@ -1,6 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <x-app-layout>
+<div style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
     <div class="card-header text-center font-weight-bold" style="color: #fff">DECLARED EXPORT DETAILS </div>
     <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
@@ -438,10 +439,10 @@
     @endphp
 
     
+  </div>
+     </form>
+ </div>
 </div>
-    </form>
-</div>
-
 </x-app-layout>
 <script>
 document.getElementById("taskpif_valueofgoods").onchange = function() {myFunction()};
