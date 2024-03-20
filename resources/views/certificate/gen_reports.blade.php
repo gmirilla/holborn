@@ -13,7 +13,7 @@
 
     @endphp
 
-    <div class="py-12">
+    <div class="py-12" style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
         <div>
             <div>
                 <div class="card-body py-12 bg-white" style="margin-left: 35px; margin-right: 40px;  padding:10px;">

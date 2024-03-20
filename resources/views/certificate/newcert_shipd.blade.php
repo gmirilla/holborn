@@ -1,4 +1,5 @@
 <x-app-layout>
+    <div style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">DECLARED SHIPPING DETAILS </div>
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
@@ -62,5 +63,6 @@
 </form>
 
 </div>
+    </div>
 </x-app-layout>
 

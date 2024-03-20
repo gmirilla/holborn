@@ -6,7 +6,7 @@
 
 <x-app-layout>
 
-    <div class="py-12">
+    <div class="py-12" style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
         <div>
             <div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">

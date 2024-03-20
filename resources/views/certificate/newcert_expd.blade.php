@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <x-app-layout>
+    <div style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
     <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">EXPORTER'S DECLARATION </div>
 <div class="card-body py-12 bg-white" style="margin: 15px; padding:10px;">
@@ -183,6 +184,7 @@
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SHIPPING DETAILS</button>
 </div>
 </form>
+</div>
 </div>
 </x-app-layout>
 

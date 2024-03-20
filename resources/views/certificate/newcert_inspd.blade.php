@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <x-app-layout>
+    <div style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
 <div class="card-header text-center font-weight-bold" style="color: #fff">CCI NUMBER: {{$cci->cci_id}} | STATUS: ( {{$cci->status}})</div>
 <div class="card-header text-center font-weight-bold" style="color: #fff">PRE-SHIPMENT INSPECTION FINDINGS</div>
 @if ($errors->any())
@@ -145,6 +146,7 @@
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SUBMIT FOR APPROVAL</button>
     </div>
 </form>
+</div>
 </div>
 </x-app-layout>
 <script>
