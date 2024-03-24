@@ -20,6 +20,8 @@ class CicController extends Controller
     public function index(Request $request)
     {
         $ciclist=cic::latest()->paginate(25);
+        $user= User::find(Auth::id());
+        
 
        
 
