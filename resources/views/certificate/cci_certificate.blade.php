@@ -11,7 +11,7 @@
     <div>
         <div style="float:right">
             {!! QrCode::generate($jsoncci) !!}</div>
-        <h3 style="text-align: center" >NEROLI TECHNOLOGIES LIMITED RC: 998330</h3>
+        <h3 style="text-align: center" >HOLBORN OIL & GAS LIMITED</h3>
 
         <h5 style="text-align: center" >CLEAN CERTIFICATE OF INSPECTION <br/>
 ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>

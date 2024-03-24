@@ -24,8 +24,8 @@
             <div>
                 <a href="/">
     
-                    <img src="/img/neroli_logo.jpeg" alt="Neroli Logo"/>
-                    <div> <b>NEROLI TECHNOLOGIES</b></div>
+                    <img src="/img/holborn_logo.png" alt="Holborn Logo"/>
+                    <div> <b>HOLBORN OIL & GAS</b></div>
                 </a>
             </div>
 
