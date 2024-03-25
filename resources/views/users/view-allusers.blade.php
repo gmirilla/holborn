@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12" style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
+    <div class="py-12" style='font-family: "Trebuchet MS", Tahoma, sans-serif;'>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-white-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-black-900 dark:text-black-100">
@@ -18,7 +18,7 @@
 
                         <label style="display:none">Search by User name</label>
                         <div class="flex">
-                        <input type="text" value="" placeholder="Search by CCI Id" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
+                        <input type="text" value="" placeholder="Search by Username" class="form-control block flex-1 border-1 bg-transparent py-1.5 pl-1 
                         text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" id="taskcci_id"  name="searchcci_id">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">GO</button>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="grid grid-cols-4 gap-4">
 
                     <div><a href='/newcert/create' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">NEW USER</a></div>
-                    <div><a href='/newcert/validate' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">NEW CURRENCY/a></div>
+                    <div><a href='/newcert/validate' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">NEW CURRENCY</a></div>
                     <div><a href='/newcert/approval_list' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> MODIFY NUMBERING</a></div>
                     </div>
                 </div>

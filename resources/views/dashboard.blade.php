@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12" style='font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;'>
+    <div class="py-12" style='font-family: "Trebuchet MS", Tahoma, sans-serif;'>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-white-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-black-900 dark:text-black-100">

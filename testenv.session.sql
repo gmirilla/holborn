@@ -1,0 +1,1 @@
+update users set role='0,ADMINISTRATOR'
