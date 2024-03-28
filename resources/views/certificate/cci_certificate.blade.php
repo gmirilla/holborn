@@ -6,7 +6,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <div style="width:21cm; height:28cm;  overflow: hidden;">
 <div style="float:left">
-    <img src="/img/neroli-logo.jpeg" alt="Logo" width="60" height="60">
+    <img src="/img/holborn_logo.png" alt="Logo" width="60" height="60">
 </div>
     <div>
         <div style="float:right">
@@ -15,9 +15,9 @@
 
         <h5 style="text-align: center" >CLEAN CERTIFICATE OF INSPECTION <br/>
 ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
-<h6 style="text-align: center" ><u>http://cic.nerolitechnologies.ng/check/printcert?id={{$cci->id}}</u></h6>
+<h6 style="text-align: center" ><u>http://cic.holbornoil.ng/check/printcert?id={{$cci->id}}</u></h6>
 
-<div style="font-size: 11px; text-align:center;"><strong>CCI Number: {{$cci->cci_id}}</strong></div>
+<div style="font-size: 11px; text-align:center; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"><strong>CCI Number: {{$cci->cci_id}}</strong></div>
     </div>
     <div style="padding:10px">
     <table style=" border:2px; font-size:10px" class="table table-bordered table-sm table-striped">
