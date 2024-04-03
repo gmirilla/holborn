@@ -151,7 +151,7 @@ ACCORDING TO THE EXPORT REQUIREMENTS OF THE FEDERAL REPUBLIC OF NIGERIA</h5>
         </tr>
         <tr>
             <td>
-                <div><img src="/img/smoh-sign.png" alt="signature of authorized approver" ></div>
+                <div><img src="/img/jdatonye_sign.png" alt="signature of authorized approver" ></div>
             </td>
             <td>
             </td>
