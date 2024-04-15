@@ -40,7 +40,7 @@
                         @php
                             if (str_contains($roles,'ADMINISTRATOR')) 
                             {
-                             $adminshow="<div><a href='/usermgmt' class='bg-green-500 hover:bg-green-700 text-white 
+                             $adminshow="<div><a href='/usermgmt' class='bg-red-500 hover:bg-green-700 text-white 
                                 font-bold py-2 px-4 rounded'>ADMINISTRATION 
                                 </a></div>";
                                 echo $adminshow;
