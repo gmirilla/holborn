@@ -60,13 +60,6 @@
                             <th style="width: 10%;border: 1px solid;">Archive</th>
                         </thead>
                         @forelse ($allcurr as $curr )
-<!--                            <tr>
-                                <td>{{$curr->name}}</td>
-                                <td>{{$curr->abbr}}</td>
-                                <td>{{$curr->symbol}}</td>
-                                <td><a href='usermgmt/editcurr?id={{$curr->id}}' class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> VIEW </td>
-                            </tr>
-                        -->
                         <tr>
                             <form action="/usermgmt/editcurrency" method="POST">
                                 @csrf>
@@ -90,7 +83,7 @@
                                 name="ecurr_symbol">
                             </td>
                             <td>
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                <button class="bg-red-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Edit</button>
                             </td>
                             <td>
                                 <a href="#" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @disabled(true)>Archive</button>
