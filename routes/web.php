@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CicController;
 use App\Http\Controllers\csvController;
 use App\Http\Controllers\usermgmtController;
+use App\Http\Controllers\currencyController;
+use App\Http\Controllers\NumberGenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +68,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/usermgmt/edit_user', [usermgmtController::class,'edit']);
     Route::post('/usermgmt/edit_user_profile', [usermgmtController::class,'editprofile']);
     Route::post('/usermgmt/del_user', [usermgmtController::class,'destroy']);
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/usermgmt/currency',[currencyController::class, 'index']);
+    Route::post('/usermgmt/addcurrency',[currencyController::class, 'store']);
+    Route::post('/usermgmt/editcurrency',[currencyController::class, 'edit']);   
+
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/usermgmt/numbering',[NumberGenController::class, 'index']);
+    Route::post('/usermgmt/addnumbers',[NumberGenController::class, 'store']);
+    Route::post('/usermgmt/editnumbering',[NumberGenController::class, 'edit']);   
+
 });
 
 Route::middleware('auth')->group(function () {

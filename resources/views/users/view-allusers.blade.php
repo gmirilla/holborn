@@ -35,9 +35,9 @@
                 <div class="p-6 text-black-900 dark:text-black-100">
                     <div class="grid grid-cols-4 gap-4">
 
-                    <div><a href='/newcert/create' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">NEW USER</a></div>
-                    <div><a href='/newcert/validate' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">NEW CURRENCY</a></div>
-                    <div><a href='/newcert/approval_list' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> MODIFY NUMBERING</a></div>
+                    <div><a href='#' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">NEW USER</a></div>
+                    <div><a href='/usermgmt/currency' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">CURRENCY</a></div>
+                    <div><a href='/usermgmt/numbering' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> MODIFY NUMBERING</a></div>
                     </div>
                 </div>
             </div>

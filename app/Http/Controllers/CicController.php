@@ -34,6 +34,14 @@ class CicController extends Controller
      */
     public function homeDashboard(Request $request)
     {
+        /**
+         * Check for Authorisation 
+         * 
+        */
+        $user= User::find(Auth::id());
+        $roles=$user->role;
+
+
         if($request->searchcci_id==null){
             $cicList=cic::orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(25);
 
@@ -44,8 +52,9 @@ class CicController extends Controller
             ->orderBy('created_at','desc')->orderBy('updated_at','desc')->paginate(25);
 
         }
+
  
-        return view('dashboard')->with('ccilist', $cicList);
+        return view('dashboard')->with('ccilist', $cicList)->with('roles',$roles);
         
     }
 

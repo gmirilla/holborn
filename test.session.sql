@@ -1,2 +1,1 @@
-update users SET role = "0,ADMINISTRATOR,VALIDATOR,APPROVER,SUPERUSER"
-;
+delete from currencies;

@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
             SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+            App\Providers\CustomHelperServiceProvider::class,
 
     ])->toArray(),
 
